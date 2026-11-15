@@ -1,0 +1,13 @@
+# Paquet construit par BigWigsMods/packager (voir .github/workflows/release.yml).
+package-as: FreresDEpee
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+ignore:
+  - .github
+  - media
+  - scripts
+  - tests
+  - README.md
