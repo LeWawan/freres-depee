@@ -576,10 +576,10 @@ local function Card(info, y)
     end
     if info.est then
         local e = info.est
-        local parts = { HEX.xp .. "~" .. num(math.floor(e.xph / 100 + 0.5) * 100) .. " XP/h|r",
-            "~" .. math.max(1, math.floor(e.minutes + 0.5)) .. " min" .. (e.exact and " restantes" or "")
+        local parts = { HEX.xp .. "env. " .. num(math.floor(e.xph / 100 + 0.5) * 100) .. " XP/h|r",
+            "env. " .. math.max(1, math.floor(e.minutes + 0.5)) .. " min" .. (e.exact and " restantes" or "")
             .. (e.trip and (HEX.grey .. " dont " .. math.max(1, math.floor(e.trip + 0.5)) .. " de trajet|r") or "") }
-        if e.kills > 0 then parts[#parts + 1] = "~" .. e.kills .. " kills" end
+        if e.kills > 0 then parts[#parts + 1] = "env. " .. e.kills .. " kills" end
         if e.objects > 0 then parts[#parts + 1] = e.objects .. " à ramasser" end
         y = y - Line(HEX.label .. "Rentabilité|r  " .. e.color .. e.label .. "|r", x, y, w) - 2
         y = y - Line(table.concat(parts, HEX.grey .. "  ·  |r"), x, y, w) - 4
@@ -1008,7 +1008,7 @@ local function npcListImpl()
             local txt = xp > 0 and (HEX.xp .. num(xp) .. " XP|r") or ""
             if ok and e then
                 txt = txt .. "  " .. e.color .. e.short .. "|r"
-                r.tip[#r.tip + 1] = "Rentabilité : " .. e.color .. e.label .. "|r (~" .. num(math.floor(e.xph / 100 + 0.5) * 100) .. " XP/h, ~"
+                r.tip[#r.tip + 1] = "Rentabilité : " .. e.color .. e.label .. "|r (env. " .. num(math.floor(e.xph / 100 + 0.5) * 100) .. " XP/h, env. "
                     .. math.max(1, math.floor(e.minutes + 0.5)) .. " min" .. (e.trip and (" dont " .. math.max(1, math.floor(e.trip + 0.5)) .. " de trajet") or "") .. ")"
             end
             if log then r.tip[#r.tip + 1] = "|cffff9933Dans ton journal|r" end
