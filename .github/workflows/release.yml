@@ -1,0 +1,21 @@
+# Sur un tag vX.Y.Z : construit le zip et le publie sur GitHub et CurseForge.
+# CurseForge a besoin de "## X-Curse-Project-ID" dans le .toc et du secret CF_API_KEY.
+name: Release
+
+on:
+  push:
+    tags: ["v*"]
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: BigWigsMods/packager@v2
