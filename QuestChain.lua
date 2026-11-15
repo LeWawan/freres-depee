@@ -63,8 +63,27 @@ local function dbGet(kind, id, field)
     return ok and v or nil
 end
 
+local function isDone(id)
+    if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then return C_QuestLog.IsQuestFlaggedCompleted(id) end
+    return IsQuestFlaggedCompleted and IsQuestFlaggedCompleted(id)
+end
+local function inLog(id)
+    if C_QuestLog and C_QuestLog.GetLogIndexForQuestID then return C_QuestLog.GetLogIndexForQuestID(id) ~= nil end
+    return GetQuestLogIndexByID and (GetQuestLogIndexByID(id) or 0) > 0
+end
+
+local npcQuest -- quête proposée ou rendue chez un PNJ en ce moment
 local QXP
 local function questXP(id, q)
+    -- Le jeu d'abord (quête au journal ou chez le PNJ) : c'est la valeur réelle de ce serveur.
+    if inLog(id) and GetQuestLogRewardXP then
+        local ok, xp = pcall(GetQuestLogRewardXP, id)
+        if ok and xp and xp > 0 then return xp end
+    end
+    if npcQuest == id and GetRewardXP then
+        local xp = GetRewardXP()
+        if xp and xp > 0 then return xp end
+    end
     if QXP == nil then
         QXP = false
         if _G.QuestieLoader and QuestieLoader.ImportModule then
@@ -79,14 +98,6 @@ local function questXP(id, q)
     return q.rewards and q.rewards.xp
 end
 
-local function isDone(id)
-    if C_QuestLog and C_QuestLog.IsQuestFlaggedCompleted then return C_QuestLog.IsQuestFlaggedCompleted(id) end
-    return IsQuestFlaggedCompleted and IsQuestFlaggedCompleted(id)
-end
-local function inLog(id)
-    if C_QuestLog and C_QuestLog.GetLogIndexForQuestID then return C_QuestLog.GetLogIndexForQuestID(id) ~= nil end
-    return GetQuestLogIndexByID and (GetQuestLogIndexByID(id) or 0) > 0
-end
 
 local player = {}
 local function forMe(q)
@@ -146,7 +157,6 @@ local function prereqs(id, q)
 end
 ns.prereqs = prereqs
 
-local npcQuest -- quête proposée ou rendue chez un PNJ en ce moment
 
 -- Récompenses lues dans la fenêtre du PNJ ou dans le journal (QuestieDB ne les a pas).
 local function linkId(link) return link and tonumber(link:match("item:(%d+)")) end
