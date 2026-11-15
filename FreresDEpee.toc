@@ -1,0 +1,13 @@
+## Interface: 16001
+## Title: Frères d'Épée
+## Notes: Hub QOL : automatisations (gris, réparation, quêtes, résurrection) et Quest Chain. /fdp
+## Author: LeWawan
+## Version: 1.3.0
+## X-License: MIT
+## X-Curse-Project-ID: 1807421
+## OptionalDeps: QuestieDB, Questie
+## SavedVariables: FreresDEpeeDB
+
+Core.lua
+Profit.lua
+QuestChain.lua
