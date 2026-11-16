@@ -43,8 +43,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # HEAD est le commit chore(release) tagué. Pas de jeton GitHub : la release existe déjà.
+      # Script appelé directement : sur un push de branche dont HEAD est tagué, le packager
+      # attend le push du tag et s'arrête ("Found future tag"). Ce push n'arrive jamais ici.
       - if: steps.semrel.outputs.new_release_published == 'true'
-        uses: BigWigsMods/packager@v2
+        run: curl -sSf https://raw.githubusercontent.com/BigWigsMods/packager/v2/release.sh | GITHUB_EVENT_NAME=workflow_dispatch bash
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
       - if: steps.semrel.outputs.new_release_published == 'true'
