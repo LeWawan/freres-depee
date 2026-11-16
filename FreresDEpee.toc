@@ -29,6 +29,7 @@ guides/Horde-Classe-Mage-Baton.lua
 guides/Horde-Classe-Mage-Robe.lua
 guides/Horde-Classe-Mage-Neant.lua
 guides/Horde-Classe-Paladin-Destrier.lua
+guides/Horde-Classe-Priest-Robe.lua
 guides/Horde-Classe-Shaman-Eau.lua
 guides/Horde-Classe-Shaman-Air.lua
 guides/Horde-Classe-Warlock-Felhunter.lua
