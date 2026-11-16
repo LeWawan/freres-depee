@@ -36,6 +36,8 @@ guides/Horde-Classe-Rogue-Pilleurs.lua
 guides/Horde-Classe-Rogue-Poisons.lua
 guides/Horde-Classe-Rogue-Ravenholdt.lua
 guides/Horde-Classe-Rogue-Stromgarde.lua
+guides/Horde-Classe-Shaman-Terre.lua
+guides/Horde-Classe-Shaman-Feu.lua
 guides/Horde-Classe-Shaman-Eau.lua
 guides/Horde-Classe-Shaman-Air.lua
 guides/Horde-Classe-Warlock-Felhunter.lua
