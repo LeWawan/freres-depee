@@ -5,9 +5,12 @@
 ## Version: 1.4.1
 ## X-License: MIT
 ## X-Curse-Project-ID: 1807421
-## OptionalDeps: QuestieDB, Questie
+## OptionalDeps: QuestieDB, Questie, RXPGuides
 ## SavedVariables: FreresDEpeeDB
 
 Core.lua
 Profit.lua
 QuestChain.lua
+
+guides/Horde-ThousandNeedles.lua
+guides/Horde-Warrior-Berserker.lua

@@ -9,6 +9,10 @@ manual-changelog:
 required-dependencies:
   - questie
 
+# RestedXP : seulement pour le Guide FDP (guides/), ignoré s'il est absent.
+optional-dependencies:
+  - restedxp-guide
+
 ignore:
   - .github
   - media

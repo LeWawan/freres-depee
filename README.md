@@ -41,6 +41,7 @@ Drag the panel by its header. Right-click the header to put it back in place.
 ## Dependencies
 
 - **Questie** (with QuestieDB) is installed alongside by the CurseForge app: it provides quest chains, prerequisites and quest givers. Without it, the Quest Chain panel only shows what the game knows about the quest.
+- **RestedXP Guides** is optional. When installed, the Guide FDP for Thousand Needles (Horde, 27-33, work in progress) shows up in its menu, followed for Warriors by the berserker stance quest. Without it, the guide is skipped.
 - The Auto part works on its own.
 
 ## Feedback
@@ -61,6 +62,7 @@ ln -s "$PWD" "/path/to/World of Warcraft/_forever_/Interface/AddOns/FreresDEpee"
 | Path | Content |
 |---|---|
 | `FreresDEpee.toc`, `*.lua` | The addon. `Core.lua`: automations and the `/fdp` window. `QuestChain.lua`: the panel. `Profit.lua`: efficiency estimates and recorded runs. |
+| `guides/` | RestedXP guides, registered only when RXPGuides is loaded. |
 | `tests/smoke.lua` | Loads the addon against a fake WoW API and runs the panel through its states. |
 | `scripts/package.sh` | Builds `dist/FreresDEpee-<version>.zip` for a manual upload. |
 | `media/` | Logo (SVG source and PNG). |
@@ -120,6 +122,7 @@ Le panneau se déplace par son en-tête. Un clic droit sur l'en-tête le remet �
 ## Dépendances
 
 - **Questie** (avec QuestieDB) est installé en même temps par l'appli CurseForge : il fournit les données des suites de quêtes, des prérequis et des donneurs. Sans lui, le panneau Quest Chain n'affiche que ce que le jeu sait de la quête.
+- **RestedXP Guides** est optionnel. S'il est installé, le Guide FDP Mille pointes (Horde, 27-33, en cours d'écriture) apparaît dans son menu, suivi pour les guerriers de la quête de la Posture berserker. Sans lui, le guide est ignoré.
 - La partie Auto fonctionne seule.
 
 ## Retours
