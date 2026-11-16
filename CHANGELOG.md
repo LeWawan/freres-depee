@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.1](https://github.com/LeWawan/freres-depee/compare/v1.4.0...v1.4.1) (2026-11-16)
+
+
+### Bug Fixes
+
+* **ci:** package after semantic-release tags the commit ([055abee](https://github.com/LeWawan/freres-depee/commit/055abee8a037f3b91a79c37f8c93634df16c1ec5))
+
 # [1.4.0](https://github.com/LeWawan/freres-depee/compare/v1.3.0...v1.4.0) (2026-11-16)
 
 
