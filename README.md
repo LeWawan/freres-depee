@@ -63,6 +63,7 @@ ln -s "$PWD" "/path/to/World of Warcraft/_forever_/Interface/AddOns/FreresDEpee"
 |---|---|
 | `FreresDEpee.toc`, `*.lua` | The addon. `Core.lua`: automations and the `/fdp` window. `QuestChain.lua`: the panel. `Profit.lua`: efficiency estimates and recorded runs. |
 | `guides/` | RestedXP guides, registered only when RXPGuides is loaded. |
+| `docs/` | RestedXP guide syntax and the handover notes for writing new guides (`guides-handover.md`). |
 | `tests/smoke.lua` | Loads the addon against a fake WoW API and runs the panel through its states. |
 | `scripts/package.sh` | Builds `dist/FreresDEpee-<version>.zip` for a manual upload. |
 | `media/` | Logo (SVG source and PNG). |
