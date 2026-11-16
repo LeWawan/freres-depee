@@ -40,7 +40,7 @@ Drag the panel by its header. Right-click the header to put it back in place.
 
 ## Dependencies
 
-- **Questie** (with QuestieDB) is recommended: it provides quest chains, prerequisites and quest givers. Without it, the Quest Chain panel only shows what the game knows about the quest.
+- **Questie** (with QuestieDB) is installed alongside by the CurseForge app: it provides quest chains, prerequisites and quest givers. Without it, the Quest Chain panel only shows what the game knows about the quest.
 - The Auto part works on its own.
 
 ## Feedback
@@ -119,7 +119,7 @@ Le panneau se déplace par son en-tête. Un clic droit sur l'en-tête le remet �
 
 ## Dépendances
 
-- **Questie** (avec QuestieDB) est recommandé : il fournit les données des suites de quêtes, des prérequis et des donneurs. Sans lui, le panneau Quest Chain n'affiche que ce que le jeu sait de la quête.
+- **Questie** (avec QuestieDB) est installé en même temps par l'appli CurseForge : il fournit les données des suites de quêtes, des prérequis et des donneurs. Sans lui, le panneau Quest Chain n'affiche que ce que le jeu sait de la quête.
 - La partie Auto fonctionne seule.
 
 ## Retours
