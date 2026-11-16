@@ -238,8 +238,8 @@ Detailed rules:
 - **Missing data.** Some Forever objects have no spawns in QuestieDB. Point the step to the
   NPC or place named in the objective text and say so in a warning.
 
-Region candidates for the next guides (Horde, around 30-45): Desolace, Arathi,
-Stranglethorn, and **Riverglades** (Forever-only, 35-45, uiMap 2548, area
+Region candidates for the next guides (Horde, 37-45): Dustwallow Marsh, Swamp of Sorrows,
+Badlands, and **Riverglades** (Forever-only, 35-45, uiMap 2548, area
 16591; hub Rog'mar with Krom'rosh 256418 at 59.4,45.6, wind rider master Grakna 255993,
 innkeeper Toka 256675; ship to Tanaris from 78.1,51.9). Other Forever additions:
 Shen'dralas, Mount Hyjal (60), Excavation Site: Wetlands.
@@ -252,6 +252,11 @@ Modelled on RXP's `RestedXP Forever Dungeon Guide (H)` (`RXPGuides/Guides/foreve
   follow-ups. File `guides/<Faction>-Donjon-<Dungeon>.lua`, `#group Guide FDP Donjons (Horde)`,
   `#subgroup Donjons`, `#name <min>-<max> <Dungeon>`.
 - Quests started by a drop inside the dungeon get their own accept step after the drop.
+- Dungeon quests set aside by the region guides, for the next dungeon guides:
+  - City of Dalaran (Forever, entrance Alterac 8.5,59.2): 92434, 96984, 97287, 96986.
+  - The Drowned City (Forever): 95775, 96078, 95776, 95789, 95791.
+  - Maraudon: 7028, 7029, 7044, 7064, 7067 (Desolace givers).
+  - Scarlet Monastery: 1051 (turned in at Tarren Mill).
 - Planned: chain dungeon guides and region guides into one dungeon route with `#next`
   (`#next <Group>\<name>` across groups), as RXP does.
 
