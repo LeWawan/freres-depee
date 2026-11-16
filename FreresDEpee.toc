@@ -33,3 +33,7 @@ guides/Horde-Donjon-Lamentations.lua
 guides/Horde-Donjon-RuinesLordaeron.lua
 guides/Horde-Donjon-Ombrecroc.lua
 guides/Horde-Donjon-Brassenoire.lua
+guides/Horde-Donjon-Tranchebauge.lua
+guides/Horde-Donjon-ExcavationsPaluns.lua
+guides/Horde-Donjon-Dalaran.lua
+guides/Horde-Donjon-MonastereEcarlate.lua
