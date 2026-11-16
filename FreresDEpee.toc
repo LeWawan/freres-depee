@@ -21,4 +21,11 @@ guides/Horde-Desolace.lua
 guides/Horde-StranglethornVale.lua
 guides/Horde-ArathiHighlands.lua
 guides/Horde-Classe-Warrior-Berserker.lua
+guides/Horde-Classe-Shaman-Eau.lua
+guides/Horde-Classe-Shaman-Air.lua
+guides/Horde-Classe-Warlock-Felhunter.lua
+guides/Horde-Classe-Warlock-Orahil.lua
+guides/Horde-Classe-Warlock-Felsteed.lua
+guides/Horde-Classe-Warrior-Tourbillon.lua
+guides/Horde-Classe-Paladin-Destrier.lua
 guides/Horde-Donjon-Brassenoire.lua
