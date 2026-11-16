@@ -13,7 +13,7 @@ jobs:
       - name: Install Lua 5.1
         run: sudo apt-get update && sudo apt-get install -y lua5.1
       - name: Syntax
-        run: for f in *.lua tests/*.lua; do luac5.1 -p "$f"; done
+        run: for f in *.lua guides/*.lua tests/*.lua; do luac5.1 -p "$f"; done
       - name: Smoke test
         run: lua5.1 tests/smoke.lua .
 
