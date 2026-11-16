@@ -4,6 +4,9 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- Données : QuestieDB Forever (tools/questiedb.py). Les saphirs et les Prêtresses des
 -- marées sont dans la grotte d'accès (zone Ashenvale) ; dans l'instance, QuestieDB n'a
 -- pas de coordonnées (Pierre de la Brasse, Baron Aquanis, Lorgus Jett).
+-- Démoniste : L'Orbe de Soran'ruk (1740, sans suite dans QuestieDB). Les 3 fragments tombent
+-- des Acolytes du crépuscule ici (8,9 %), le grand fragment des Ténébreux d'Ombrecroc
+-- (0,9 %) dans le Donjon d'Ombrecroc : rendu dans ce guide ou dans celui d'Ombrecroc.
 
 RXPGuides.RegisterGuide([[
 #classic
@@ -13,6 +16,17 @@ RXPGuides.RegisterGuide([[
 #version 1
 #group Guide FDP Donjons (Horde)
 #subgroup Donjons
+
+-- ===== Démoniste : Doan Karhan (Tarides) =====
+step << Warlock
+    #completewith next
+    .goto The Barrens,49.31,57.21,30 >>Va voir |cRXP_FRIENDLY_Doan Karhan|r, à l'est du Camp Taurajo, dans les Tarides
+    .isQuestAvailable 1740
+step << Warlock
+    .goto The Barrens,49.31,57.21
+    >>Parle à |cRXP_FRIENDLY_Doan Karhan|r
+    .accept 1740 >>Accepte L'Orbe de Soran'ruk
+    .target 6247
 
 -- ===== Zoram'gar : quêtes de Je'neu =====
 step
@@ -57,6 +71,13 @@ step
     .complete 6563,1 --Saphir d'Aku'Mai (20)
 
 -- ===== Instance =====
+step << Warlock
+    #completewith RetourJeneu
+    >>Tue les |cRXP_ENEMY_Acolytes du crépuscule|r (fond de l'instance, autour des autels) pour 3 |cRXP_LOOT_Fragments de Soran'ruk|r
+    >>|cRXP_WARN_Taux faible (~9 %), il faut souvent plusieurs passages. Le grand fragment tombe des Ténébreux d'Ombrecroc (Donjon d'Ombrecroc)|r
+    .complete 1740,1 --Fragment de Soran'ruk (3)
+    .mob 4809
+    .isOnQuest 1740
 step
     >>Entre dans l'instance. Clique sur la |cRXP_PICK_Pierre de la Brasse|r dans l'eau pour le |cRXP_LOOT_Noyau de la Brasse|r
     >>|cRXP_WARN_Cliquer la pierre fait apparaître le |cRXP_ENEMY_Baron Aquanis|r (élite 28)|r
@@ -75,6 +96,7 @@ step
 
 -- ===== Zoram'gar : rendus =====
 step
+    #label RetourJeneu
     .goto Ashenvale,11.56,34.29
     >>Retourne voir |cRXP_FRIENDLY_Je'neu Sancrea|r à Zoram'gar
     .turnin 6563 >>Rends L'Essence d'Aku'Mai
@@ -106,4 +128,12 @@ step
     .turnin 6565 >>Rends Allégeance aux Dieux très anciens
     .target 12736
     .isQuestComplete 6565
+
+-- ===== Démoniste : rendu si le grand fragment est déjà fait (Ombrecroc) =====
+step << Warlock
+    .goto The Barrens,49.31,57.21
+    >>Retourne voir |cRXP_FRIENDLY_Doan Karhan|r dans les Tarides
+    .turnin 1740 >>Rends L'Orbe de Soran'ruk
+    .target 6247
+    .isQuestComplete 1740
 ]])
