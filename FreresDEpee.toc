@@ -20,6 +20,7 @@ guides/Horde-AlteracMountains.lua
 guides/Horde-Desolace.lua
 guides/Horde-StranglethornVale.lua
 guides/Horde-ArathiHighlands.lua
+guides/Horde-Classe-Hunter-Familier.lua
 guides/Horde-Classe-Paladin-Destrier.lua
 guides/Horde-Classe-Shaman-Eau.lua
 guides/Horde-Classe-Shaman-Air.lua
