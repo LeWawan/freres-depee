@@ -55,8 +55,9 @@ Found a bug or have an idea? Leave a comment. For a panel display issue, type `/
 The addon lives at the root of this repository, so the repository itself can be the addon folder.
 
 ```bash
-# play the working copy in game (adjust the AddOns path to your install)
-ln -s "$PWD" "/path/to/World of Warcraft/_forever_/Interface/AddOns/FreresDEpee"
+# play the working copy in game: links the repo into the AddOns folder (safe to rerun)
+export WOW_ADDONS="/path/to/World of Warcraft/_forever_/Interface/AddOns"
+./scripts/link.sh
 ```
 
 | Path | Content |
@@ -67,6 +68,7 @@ ln -s "$PWD" "/path/to/World of Warcraft/_forever_/Interface/AddOns/FreresDEpee"
 | `tools/` | `questiedb.py` reads QuestieDB Forever, `lint_guide.py` checks guides against it. Both need `WOW_ADDONS`. |
 | `tests/smoke.lua` | Loads the addon against a fake WoW API and runs the panel through its states. |
 | `scripts/package.sh` | Builds `dist/FreresDEpee-<version>.zip` for a manual upload. |
+| `scripts/link.sh` | Links the repo into the game's AddOns folder. |
 | `media/` | Logo (SVG source and PNG). |
 | `.pkgmeta`, `.github/workflows/` | CI on every push, and a CurseForge and GitHub release on every `v*` tag. |
 
