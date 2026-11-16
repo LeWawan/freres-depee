@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.5.0](https://github.com/LeWawan/freres-depee/compare/v1.4.1...v1.5.0) (2026-11-16)
+
+
+### Features
+
+* bundle the FDP RestedXP guides ([95c36e3](https://github.com/LeWawan/freres-depee/commit/95c36e3985b62258679f48ea48f5b01523a027c2))
+
 ## [1.4.1](https://github.com/LeWawan/freres-depee/compare/v1.4.0...v1.4.1) (2026-11-16)
 
 

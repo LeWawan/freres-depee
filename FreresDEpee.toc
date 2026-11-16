@@ -2,7 +2,7 @@
 ## Title: Frères d'Épée
 ## Notes: Hub QOL : automatisations (gris, réparation, quêtes, résurrection) et Quest Chain. /fdp
 ## Author: LeWawan
-## Version: 1.4.1
+## Version: 1.5.0
 ## X-License: MIT
 ## X-Curse-Project-ID: 1807421
 ## OptionalDeps: QuestieDB, Questie, RXPGuides
