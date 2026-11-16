@@ -12,5 +12,6 @@ Core.lua
 Profit.lua
 QuestChain.lua
 
+guides/Horde-StonetalonMountains.lua
 guides/Horde-ThousandNeedles.lua
 guides/Horde-Warrior-Berserker.lua
