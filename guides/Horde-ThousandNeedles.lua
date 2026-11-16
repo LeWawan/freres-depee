@@ -93,6 +93,7 @@ step
     .accept 98069 >>Accepte Les fournitures de Librevent volées
     .accept 98070 >>Accepte Interruption des hurlements
     .target 4877
+    .xp <27,1
 step
     .goto Thousand Needles,44.64,50.29
     >>Parle à |cRXP_FRIENDLY_Hagar Lightninghoof|r
@@ -108,6 +109,7 @@ step
     >>Ramasse les |cRXP_LOOT_Fournitures de Librevent volées|r dès que tu en vois
     >>|cRXP_WARN_Emplacement non documenté dans Questie : note où tu les trouves|r
     .complete 98069,1 --Fournitures de Librevent volées (8)
+    .isOnQuest 98069
 
 -- ===== Traqueur des plaines Dorn : L'épreuve de la Foi =====
 step
@@ -208,6 +210,7 @@ step
     .mob 4100
     .mob 4101
     .mob 4104
+    .isOnQuest 98070
 step
     #completewith Grenka
     .goto Thousand Needles,27.59,49.86,12,0
@@ -237,6 +240,7 @@ step
     .mob 4100
     .mob 4101
     .mob 4104
+    .isOnQuest 98070
 
 -- ===== Retour Dorn puis poste de Librevent =====
 step
@@ -272,6 +276,7 @@ step
     >>Parle à |cRXP_FRIENDLY_Jandia|r
     .turnin 98070 >>Rends Interruption des hurlements
     .target 4877
+    .isOnQuest 98070
 
 -- ===== Pic de la Sombrenuée : Arnak, Lakota, notes secrètes =====
 step
