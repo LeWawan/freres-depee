@@ -12,7 +12,7 @@ lua5.1 tests/smoke.lua . >/dev/null
 stage=$(mktemp -d)
 trap 'rm -rf "$stage"' EXIT
 mkdir "$stage/FreresDEpee"
-cp "${files[@]}" "$stage/FreresDEpee/"
+cp --parents "${files[@]}" "$stage/FreresDEpee/"
 mkdir -p dist
 out="$root/dist/FreresDEpee-$version.zip"
 rm -f "$out"
