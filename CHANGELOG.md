@@ -1,5 +1,12 @@
 # Changelog
 
+# [1.4.0](https://github.com/LeWawan/freres-depee/compare/v1.3.0...v1.4.0) (2026-11-16)
+
+
+### Features
+
+* declare Questie as a required CurseForge dependency ([292d1d3](https://github.com/LeWawan/freres-depee/commit/292d1d38b8876f164beebca0c315f7a17de05660))
+
 ## 1.3.0
 
 Première version publique.
