@@ -11,6 +11,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 #group Guide FDP (Horde)
 #subgroup Classe
+#next 30-31 Alterac Mountains
 
 step
     .xp 30 >>Monte au niveau 30, requis pour la quête

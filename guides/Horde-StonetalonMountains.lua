@@ -15,6 +15,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions
+#next 22 Totem d'eau << Shaman
 #next 23-24 Hillsbrad Foothills
 
 -- ===== Alertes : quêtes à forte XP dont le prérequis se fait hors de la région =====

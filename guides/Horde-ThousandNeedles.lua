@@ -14,6 +14,9 @@ RXPGuides.RegisterGuide([[
 #group Guide FDP (Horde)
 #subgroup Régions
 #next 30 Posture berserker << Warrior
+#next 30 Totem d'air << Shaman
+#next 30 Chasseur corrompu << Warlock
+#next 30-31 Alterac Mountains
 
 -- ===== Alertes : quêtes à forte XP dont le prérequis se fait hors de la région =====
 -- Visibles tant que la quête rapporte l'XP pleine (niveau de quête + 5).
