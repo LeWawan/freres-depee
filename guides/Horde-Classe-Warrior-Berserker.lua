@@ -7,7 +7,7 @@ RXPGuides.RegisterGuide([[
 #classic
 << Horde Warrior
 #name 30 Posture berserker
-#displayname [FDP] Warrior 30 : Posture berserker
+#displayname [FDP] Guerrier 30 : Posture berserker
 #version 1
 #group Guide FDP (Horde)
 #subgroup Classe
