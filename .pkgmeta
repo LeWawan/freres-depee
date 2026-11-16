@@ -5,6 +5,10 @@ manual-changelog:
   filename: CHANGELOG.md
   markup-type: markdown
 
+# Relation CurseForge : l'appli CurseForge installe Questie avec l'addon.
+required-dependencies:
+  - questie
+
 ignore:
   - .github
   - media
