@@ -18,6 +18,8 @@ ignore:
   - media
   - scripts
   - tests
+  - tools
+  - docs
   - README.md
   - CONTRIBUTING.md
   - .releaserc.json
