@@ -576,5 +576,5 @@ step
     .target 4629
 step
     #label FinMillePointes
-    .xp 30 >>Monte au niveau 30 si ce n'est pas déjà fait
+    +|cRXP_WARN_Niveau conseillé pour la suite : 30. En dessous, farme un peu sur la route ou fais un donjon|r. Coche pour continuer
 ]])
