@@ -40,9 +40,14 @@ guides/Horde-Classe-Shaman-Terre.lua
 guides/Horde-Classe-Shaman-Feu.lua
 guides/Horde-Classe-Shaman-Eau.lua
 guides/Horde-Classe-Shaman-Air.lua
+guides/Horde-Classe-Warlock-Marcheur.lua
+guides/Horde-Classe-Warlock-Incube.lua
+guides/Horde-Classe-Warlock-Succube.lua
 guides/Horde-Classe-Warlock-Felhunter.lua
+guides/Horde-Classe-Warlock-Robe.lua
 guides/Horde-Classe-Warlock-Orahil.lua
 guides/Horde-Classe-Warlock-Felsteed.lua
+guides/Horde-Classe-Warlock-Kroshius.lua
 guides/Horde-Classe-Warrior-Arme.lua
 guides/Horde-Classe-Warrior-Ruga.lua
 guides/Horde-Classe-Warrior-Berserker.lua
