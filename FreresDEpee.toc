@@ -25,6 +25,9 @@ guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua
 guides/Horde-Classe-Druid-Felin.lua
 guides/Horde-Classe-Hunter-Familier.lua
+guides/Horde-Classe-Mage-Baton.lua
+guides/Horde-Classe-Mage-Robe.lua
+guides/Horde-Classe-Mage-Neant.lua
 guides/Horde-Classe-Paladin-Destrier.lua
 guides/Horde-Classe-Shaman-Eau.lua
 guides/Horde-Classe-Shaman-Air.lua
