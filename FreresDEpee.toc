@@ -17,3 +17,4 @@ guides/Horde-HillsbradFoothills.lua
 guides/Horde-Ashenvale.lua
 guides/Horde-ThousandNeedles.lua
 guides/Horde-Warrior-Berserker.lua
+guides/Horde-Donjon-Brassenoire.lua

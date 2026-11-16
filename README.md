@@ -41,7 +41,7 @@ Drag the panel by its header. Right-click the header to put it back in place.
 ## Dependencies
 
 - **Questie** (with QuestieDB) is installed alongside by the CurseForge app: it provides quest chains, prerequisites and quest givers. Without it, the Quest Chain panel only shows what the game knows about the quest.
-- **RestedXP Guides** is optional. When installed, the Guide FDP for Thousand Needles (Horde, 27-33, work in progress) shows up in its menu, followed for Warriors by the berserker stance quest. Without it, the guide is skipped.
+- **RestedXP Guides** is optional. When installed, the Guide FDP shows up in its menu: a Horde speed route from level 22, after RestedXP's own 1-22 guide (Stonetalon, Hillsbrad, Ashenvale, Thousand Needles, work in progress), the Warrior berserker stance quest, and a Blackfathom Deeps dungeon guide. Without it, the guides are skipped.
 - The Auto part works on its own.
 
 ## Feedback
@@ -126,7 +126,7 @@ Le panneau se déplace par son en-tête. Un clic droit sur l'en-tête le remet �
 ## Dépendances
 
 - **Questie** (avec QuestieDB) est installé en même temps par l'appli CurseForge : il fournit les données des suites de quêtes, des prérequis et des donneurs. Sans lui, le panneau Quest Chain n'affiche que ce que le jeu sait de la quête.
-- **RestedXP Guides** est optionnel. S'il est installé, le Guide FDP Mille pointes (Horde, 27-33, en cours d'écriture) apparaît dans son menu, suivi pour les guerriers de la quête de la Posture berserker. Sans lui, le guide est ignoré.
+- **RestedXP Guides** est optionnel. S'il est installé, le Guide FDP apparaît dans son menu : une route Horde rapide à partir du niveau 22, après le guide 1-22 de RestedXP (Serres-Rocheuses, Hillsbrad, Orneval, Mille pointes, en cours d'écriture), la quête de la Posture berserker pour les guerriers et un guide de donjon pour les Profondeurs de Brassenoire. Sans lui, les guides sont ignorés.
 - La partie Auto fonctionne seule.
 
 ## Retours
