@@ -28,6 +28,10 @@ guides/Horde-Classe-Hunter-Familier.lua
 guides/Horde-Classe-Mage-Baton.lua
 guides/Horde-Classe-Mage-Robe.lua
 guides/Horde-Classe-Mage-Neant.lua
+guides/Horde-Classe-Paladin-Lumiere.lua
+guides/Horde-Classe-Paladin-Bandarion.lua
+guides/Horde-Classe-Paladin-Divinite.lua
+guides/Horde-Classe-Paladin-Lumina.lua
 guides/Horde-Classe-Paladin-Destrier.lua
 guides/Horde-Classe-Priest-Robe.lua
 guides/Horde-Classe-Rogue-Malice.lua
