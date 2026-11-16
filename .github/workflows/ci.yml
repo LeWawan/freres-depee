@@ -16,3 +16,38 @@ jobs:
         run: for f in *.lua tests/*.lua; do luac5.1 -p "$f"; done
       - name: Smoke test
         run: lua5.1 tests/smoke.lua .
+
+  # Sur main : semantic-release calcule la version depuis les commits, met à jour CHANGELOG.md
+  # et le .toc, crée le tag et la release GitHub. Le packager publie ensuite sur CurseForge.
+  # Tout tient dans ce job : un tag poussé avec GITHUB_TOKEN ne déclenche aucun autre workflow.
+  release:
+    needs: check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - id: semrel
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          semantic_version: 24
+          extra_plugins: |
+            @semantic-release/changelog@6
+            @semantic-release/exec@6
+            @semantic-release/git@10
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      # HEAD est le commit chore(release) tagué. Pas de jeton GitHub : la release existe déjà.
+      - if: steps.semrel.outputs.new_release_published == 'true'
+        uses: BigWigsMods/packager@v2
+        env:
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+      - if: steps.semrel.outputs.new_release_published == 'true'
+        run: gh release upload "v${{ steps.semrel.outputs.new_release_version }}" .release/*.zip
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
