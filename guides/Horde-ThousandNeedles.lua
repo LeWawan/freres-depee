@@ -10,7 +10,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 27-33 Thousand Needles
-#displayname [FDP] Thousand Needles (27-33)
+#displayname [FDP] Mille pointes (27-33)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

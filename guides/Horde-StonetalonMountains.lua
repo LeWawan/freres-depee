@@ -12,7 +12,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 22-23 Stonetalon Mountains
-#displayname [FDP] Stonetalon Mountains (22-23)
+#displayname [FDP] Les Serres-Rocheuses (22-23)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

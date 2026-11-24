@@ -24,7 +24,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 30-32 Desolace
-#displayname [FDP] Desolace (30-32)
+#displayname [FDP] Désolace (30-32)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

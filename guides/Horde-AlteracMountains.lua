@@ -19,7 +19,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 30-31 Alterac Mountains
-#displayname [FDP] Alterac Mountains (30-31)
+#displayname [FDP] Montagnes d'Alterac (30-31)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

@@ -11,7 +11,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 23-24 Hillsbrad Foothills
-#displayname [FDP] Hillsbrad Foothills (23-24)
+#displayname [FDP] Contreforts d'Hillsbrad (23-24)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

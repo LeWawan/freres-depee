@@ -20,7 +20,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 35-37 Arathi Highlands
-#displayname [FDP] Arathi Highlands (35-37)
+#displayname [FDP] Hautes-terres d'Arathi (35-37)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions

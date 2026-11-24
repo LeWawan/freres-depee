@@ -25,7 +25,7 @@ RXPGuides.RegisterGuide([[
 #forever
 << Horde
 #name 33-36 Stranglethorn Vale
-#displayname [FDP] Stranglethorn Vale (33-36)
+#displayname [FDP] Vallée de Strangleronce (33-36)
 #version 1
 #group Guide FDP (Horde)
 #subgroup Régions
