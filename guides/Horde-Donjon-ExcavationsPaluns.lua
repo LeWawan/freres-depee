@@ -4,7 +4,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- Traqueur noir (collines au-dessus du camp Gueule-de-Dragon). La Relique des Titans tombe
 -- d'un Relic Guardian et lance Le savoir des anciens (95664 -> 98823, Thunder Bluff puis Mulgore).
 -- Données : QuestieDB Forever (tools/questiedb.py), XP et taux inconnus pour ces quêtes.
--- L'Agent Traqueur noir n'a pas de position dans QuestieDB, et Gueule-de-bois (95682) n'a pas
+-- L'Agent Traqueur noir est à Paluns 51.5,59.3 (QuestieDB). Gueule-de-bois (95682) n'a pas
 -- d'objectif chiffré : case à cocher. Mobs de l'instance sans nom français : noms anglais.
 
 RXPGuides.RegisterGuide([[
@@ -45,9 +45,8 @@ step
     .goto Wetlands,47.79,56.16,60 >>Passe le pont de Thandol et descends dans les Paluns jusqu'au site de fouilles
 step
     #label Agent
-    .goto Wetlands,47.79,56.16,60,0
+    .goto Wetlands,51.48,59.30
     >>Trouve l'|cRXP_FRIENDLY_Agent Traqueur noir|r dans les collines au-dessus du camp Gueule-de-Dragon, près du site de fouilles
-    >>|cRXP_WARN_Position absente de Questie : note où il se trouve|r
     .turnin 95663 >>Rends Rumeurs sur les Gueules-de-Dragon
     .accept 95682 >>Accepte Gueule-de-bois
     .target 13155
@@ -81,7 +80,7 @@ step
 
 -- ===== Rendus =====
 step
-    .goto Wetlands,47.79,56.16,60,0
+    .goto Wetlands,51.48,59.30
     >>Sors et retourne voir l'|cRXP_FRIENDLY_Agent Traqueur noir|r
     .turnin 95682 >>Rends Gueule-de-bois
     .target 13155
