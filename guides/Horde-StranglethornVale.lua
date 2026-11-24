@@ -15,7 +15,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 --   95773 Tridents d'écaille-de-mer (taux inconnu, 35 % = ~57 kills, suite en donjon),
 --   97386 L'offensive de Grom'gol (ogres élites 41-44), 606 Abats de Valbrume (20 % = 50 kills),
 --   600, 209, 587, 576, 604, 609 (niveau 41+), 638 Trollbane et 95141 Rapport à Rog'mar
---   (envois vers Arathi / Riverglades), 97331/97332 (prérequis 97329 Alliance seulement),
+--   (envois vers Arathi / Riverglades),
 --   95322-95327 (chaîne commencée aux Riverglades), 1116 Poussière de rêve (Marais des chagrins),
 --   1261 Marg parle (Marécage d'Âprefange, 5 %).
 -- Donjon (Cité submergée, guide de donjon à faire) : 95775, 95776, 95789, 95791 et la suite 96078.
@@ -265,8 +265,13 @@ step
     .mob 685
     .mob 689
 step
+    .goto Stranglethorn Vale,23.46,12.79
+    >>Parle à |cRXP_FRIENDLY_Zimmix Sputterspark|r, prisonnier des ruines de Zul'Kunda
+    .accept 97329 >>Accepte Où est la clé ?
+    .target 268992
+step
     #completewith ZulKunda
-    >>Tue les |cRXP_ENEMY_trolls Bloodscalp|r pour leurs |cRXP_LOOT_Oreilles|r
+    >>Tue les |cRXP_ENEMY_trolls Bloodscalp|r pour leurs |cRXP_LOOT_Oreilles|r et la |cRXP_LOOT_Clé primitive|r
     .complete 189,1 --Oreille de Bloodscalp (15)
     .mob 587
     .mob 588
@@ -289,12 +294,24 @@ step
     >>|cRXP_WARN_Emplacement des caisses non documenté dans Questie : fouille les ruines|r
     .complete 97328,1 --Cargaison volée (8)
     .complete 189,1 --Oreille de Bloodscalp (15)
+    .complete 97329,1 --Clé primitive
     .mob 587
     .mob 588
     .mob 595
     .mob 597
     .mob 660
     .mob 671
+step
+    .goto Stranglethorn Vale,23.46,12.79
+    >>Libère |cRXP_FRIENDLY_Zimmix Sputterspark|r avec la clé et lance l'escorte
+    .turnin 97329 >>Rends Où est la clé ?
+    .accept 97331 >>Accepte La grande évasion de Zimmix
+    .target 268992
+step
+    .goto Stranglethorn Vale,26.90,11.40
+    >>Escorte |cRXP_FRIENDLY_Zimmix|r hors des ruines. Tue ce qui l'attaque
+    .complete 97331,1
+    .isOnQuest 97331
 step
     .goto Stranglethorn Vale,28.40,10.60,40,0
     .goto Stranglethorn Vale,28.20,14.00,40,0
@@ -526,7 +543,14 @@ step
     .goto Stranglethorn Vale,26.35,73.56
     >>Parle à |cRXP_FRIENDLY_Maître Lozgil|r sur les quais
     .turnin 97328 >>Rends Tout ce qui vaut cher
+    .turnin 97331 >>Rends La grande évasion de Zimmix
     .target 4631
+step
+    .goto Stranglethorn Vale,26.35,73.56
+    >>Parle à |cRXP_FRIENDLY_Maître Lozgil|r : son colis part aux Rives Claires, à rendre dans le guide des Rives Claires
+    .accept 97332 >>Accepte Une confiance deux fois mal placée
+    .target 4631
+    .xp <36,1
 
 -- ===== Boucaniers de la Voile sanglante (niveau 37) =====
 step
