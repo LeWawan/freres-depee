@@ -93,4 +93,5 @@ guides/Horde-Donjon-Maraudon.lua
 guides/Horde-Donjon-TempleEnglouti.lua
 guides/Horde-Donjon-ProfondeursRochenoire.lua
 guides/Horde-Donjon-PicRochenoire.lua
+guides/Horde-Donjon-HacheTripes.lua
 guides/Horde-Donjon-Uldaman.lua
