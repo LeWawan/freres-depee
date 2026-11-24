@@ -32,6 +32,7 @@ guides/Horde-Hinterlands.lua
 guides/Horde-SearingGorge.lua
 guides/Horde-Azshara.lua
 guides/Horde-UngoroCrater.lua
+guides/Horde-Felwood.lua
 guides/Horde-Classe-Druid-Ours.lua
 guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua
