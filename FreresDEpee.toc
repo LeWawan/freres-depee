@@ -22,6 +22,7 @@ guides/Horde-StranglethornVale.lua
 guides/Horde-StranglethornVale2.lua
 guides/Horde-ArathiHighlands.lua
 guides/Horde-Riverglades.lua
+guides/Horde-DustwallowMarsh.lua
 guides/Horde-SwampOfSorrows.lua
 guides/Horde-Badlands.lua
 guides/Horde-Classe-Druid-Ours.lua
