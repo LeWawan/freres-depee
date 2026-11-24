@@ -399,10 +399,12 @@ step
     .turnin 824 >>Rends Je'neu du Cercle terrestre
     .target 12736
 step
-    #label FinAshenvale
     .goto Ashenvale,11.90,34.54
     >>Parle à |cRXP_FRIENDLY_Karang Amakkar|r
     .turnin 6621 >>Rends Le roi des Vile-sylve
     .target 12757
+step
+    #label FinAshenvale
+    +|cRXP_WARN_Niveau conseillé pour la suite : 27. En dessous, farme un peu sur la route ou fais un donjon|r. Coche pour continuer
 
 ]])
