@@ -25,6 +25,7 @@ guides/Horde-Riverglades.lua
 guides/Horde-DustwallowMarsh.lua
 guides/Horde-SwampOfSorrows.lua
 guides/Horde-Badlands.lua
+guides/Horde-Shendralas.lua
 guides/Horde-Classe-Druid-Ours.lua
 guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua
