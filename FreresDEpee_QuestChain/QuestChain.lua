@@ -1,4 +1,4 @@
-local _, ns = ...
+local ns = FreresDEpee
 
 -- Quêtes connues, construites à la demande depuis QuestieDB et le jeu (voir ensure).
 ns.Quests = {}
@@ -821,11 +821,11 @@ local hostHooked = {}
 local SelectedQuest
 -- Fenêtre ouverte à l'écran à côté de laquelle se mettre, la quête qu'elle montre et d'où vient l'info.
 local function Target()
-    if ns.db.qcNpc and QuestFrame and QuestFrame:IsVisible() then
+    if ns.DB().qcNpc and QuestFrame and QuestFrame:IsVisible() then
         local id = GetQuestID and GetQuestID()
         if id and id > 0 then return QuestFrame, id, "PNJ" end
     end
-    if not ns.db.qcLog then return end
+    if not ns.DB().qcLog then return end
     local details = QuestMapFrame and QuestMapFrame.DetailsFrame
     if details and details:IsVisible() then
         local id = details.questID or SelectedQuest()
@@ -1098,7 +1098,7 @@ local function update(refresh)
     local host, id, src = Target()
     if id ~= baseId then baseId, override, dismissed = id, nil, nil end
     npcQuest = host == QuestFrame and id or nil
-    if not ns.db.qcEnabled then return hide() end
+    if not ns.DB().qcEnabled then return hide() end
     if override then host, id, src = host or UIParent, override, "choisie" end
     if not (host and id) then dbg("rien d'ouvert") return hide() end
     if dismissed == id then
@@ -1188,3 +1188,16 @@ function ns.ResetQuestChainPos()
     ns.Profit.DB().pos = nil
     ns.Update()
 end
+
+ns.Register("FreresDEpee_QuestChain", {
+    defaults = { qcEnabled = true, qcNpc = true, qcLog = true },
+    rows = {
+        { "qcEnabled", "Afficher le panneau Quest Chain" },
+        { "qcNpc", "À côté de la fenêtre du PNJ", indent = true },
+        { "qcLog", "À côté du journal de quêtes", indent = true },
+        { "duo", "Rentabilité calculée en duo", tbl = function() return ns.Profit.DB() end },
+        { button = "Réinitialiser la position", run = ns.ResetQuestChainPos },
+        { note = "/fdp <id> : chaîne d'une quête. /fdp duo, /fdp solo, /fdp debug." },
+    },
+    fallback = ns.QuestChainCommand,
+})

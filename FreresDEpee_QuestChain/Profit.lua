@@ -1,4 +1,4 @@
-local _, ns = ...
+local ns = FreresDEpee
 
 -- Ce client range les fonctions d'objets dans C_Item ; les anciennes globales peuvent manquer.
 local GetItemInfo = (C_Item and C_Item.GetItemInfo) or GetItemInfo

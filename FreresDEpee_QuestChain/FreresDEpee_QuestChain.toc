@@ -1,0 +1,11 @@
+## Interface: 16001
+## Title: Frères d'Épée - Quest Chain
+## Notes: Chaîne complète de chaque quête, prérequis et rentabilité.
+## Author: LeWawan
+## Version: 1.6.0
+## X-License: MIT
+## Dependencies: FreresDEpee
+## OptionalDeps: QuestieDB, Questie
+
+QuestChain.lua
+Profit.lua
