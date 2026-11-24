@@ -27,6 +27,7 @@ RXPGuides.RegisterGuide([[
 #next 38 Arme tourbillon << Warrior
 #next 40 Palefroi corrompu << Warlock
 #next 40 Destrier << Paladin
+#next 37-45 Riverglades
 
 -- ===== Voyage : Fossoyeuse -> Moulin-de-Tarren -> Hautes-terres d'Arathi =====
 step

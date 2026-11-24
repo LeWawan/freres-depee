@@ -20,6 +20,7 @@ guides/Horde-AlteracMountains.lua
 guides/Horde-Desolace.lua
 guides/Horde-StranglethornVale.lua
 guides/Horde-ArathiHighlands.lua
+guides/Horde-Riverglades.lua
 guides/Horde-Classe-Druid-Ours.lua
 guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua

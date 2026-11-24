@@ -12,6 +12,7 @@ RXPGuides.RegisterGuide([[
 #version 1
 #group Guide FDP (Horde)
 #subgroup Classe
+#next 37-45 Riverglades
 
 step
     #sticky
