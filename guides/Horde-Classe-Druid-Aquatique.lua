@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Druid
 #name 16 Forme aquatique
 #displayname [FDP] Druide 16 : Forme aquatique

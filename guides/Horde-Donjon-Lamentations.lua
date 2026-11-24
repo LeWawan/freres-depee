@@ -10,6 +10,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 17-22 Wailing Caverns
 #displayname [FDP] Cavernes des lamentations (17-22)

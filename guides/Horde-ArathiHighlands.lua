@@ -17,6 +17,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 35-37 Arathi Highlands
 #displayname [FDP] Arathi Highlands (35-37)

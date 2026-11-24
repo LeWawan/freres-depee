@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 20 Incube
 #displayname [FDP] Démoniste 20 : Incube

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warrior
 #name 30 Posture berserker
 #displayname [FDP] Guerrier 30 : Posture berserker

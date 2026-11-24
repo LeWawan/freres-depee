@@ -4,6 +4,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Druid
 #name 14 Guérison du poison
 #displayname [FDP] Druide 14 : Guérison du poison

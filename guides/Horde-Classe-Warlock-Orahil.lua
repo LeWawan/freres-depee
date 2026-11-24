@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 35 Orbe d'Orahil
 #displayname [FDP] Démoniste 35 : Orbe d'Orahil

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Priest
 #name 5 Robe de prêtre
 #displayname [FDP] Prêtre 5 : Robe de prêtre

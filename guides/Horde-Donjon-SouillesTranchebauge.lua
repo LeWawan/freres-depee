@@ -10,6 +10,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 33-40 Razorfen Downs
 #displayname [FDP] Souilles de Tranchebauge (33-40)

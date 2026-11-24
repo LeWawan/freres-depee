@@ -7,6 +7,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 27-33 Thousand Needles
 #displayname [FDP] Thousand Needles (27-33)

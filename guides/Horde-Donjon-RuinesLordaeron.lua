@@ -12,6 +12,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 18-22 Ruins of Lordaeron
 #displayname [FDP] Ruines de Lordaeron (18-22)

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Paladin
 #name 8 Donjon de Bandarion
 #displayname [FDP] Paladin 8 : Donjon de Bandarion

@@ -15,6 +15,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 22-26 Ashenvale
 #displayname [FDP] Ashenvale (22-26)

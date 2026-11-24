@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Rogue
 #name 10 Lame de malice
 #displayname [FDP] Voleur 10 : Lame de malice

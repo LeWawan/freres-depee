@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Paladin
 #name 12 Leçon de divinité
 #displayname [FDP] Paladin 12 : Leçon de divinité

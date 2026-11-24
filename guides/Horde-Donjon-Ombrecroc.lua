@@ -8,6 +8,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 20-26 Shadowfang Keep
 #displayname [FDP] Donjon d'Ombrecroc (20-26)

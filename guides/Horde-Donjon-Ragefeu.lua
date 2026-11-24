@@ -8,6 +8,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 13-18 Ragefire Chasm
 #displayname [FDP] Gouffre de Ragefeu (13-18)

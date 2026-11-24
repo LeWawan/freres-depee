@@ -12,6 +12,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 25-31 Razorfen Kraul
 #displayname [FDP] Kraal de Tranchebauge (25-31)

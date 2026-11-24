@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Mage
 #name 26 Robe du Néant
 #displayname [FDP] Mage 26 : Robe du Néant

@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 31 Robe sanglante dorée
 #displayname [FDP] Démoniste 31 : Robe sanglante dorée

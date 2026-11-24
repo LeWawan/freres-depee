@@ -8,6 +8,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 23-24 Hillsbrad Foothills
 #displayname [FDP] Hillsbrad Foothills (23-24)

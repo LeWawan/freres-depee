@@ -4,6 +4,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Paladin
 #name 2 Lumière retrouvée
 #displayname [FDP] Paladin 2 : Lumière retrouvée

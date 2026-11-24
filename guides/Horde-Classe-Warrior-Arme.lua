@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warrior
 #name 10 Arme de guerrier
 #displayname [FDP] Guerrier 10 : Arme de guerrier

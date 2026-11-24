@@ -21,6 +21,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 30-32 Desolace
 #displayname [FDP] Desolace (30-32)

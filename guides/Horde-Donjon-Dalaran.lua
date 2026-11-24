@@ -11,6 +11,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 30-35 City of Dalaran
 #displayname [FDP] Cité de Dalaran (30-35)

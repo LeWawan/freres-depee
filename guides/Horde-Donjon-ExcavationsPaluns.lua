@@ -9,6 +9,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 28-34 Excavation Site Wetlands
 #displayname [FDP] Excavations : les Paluns (28-34)

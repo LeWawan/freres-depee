@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Rogue
 #name 34 Syndicat de Stromgarde
 #displayname [FDP] Voleur 34 : Syndicat de Stromgarde

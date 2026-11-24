@@ -10,6 +10,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 22-28 Blackfathom Deeps
 #displayname [FDP] Profondeurs de Brassenoire (22-28)

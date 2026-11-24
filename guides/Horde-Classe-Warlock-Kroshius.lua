@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 50 Noyau de Kroshius
 #displayname [FDP] Démoniste 50 : Noyau de Kroshius

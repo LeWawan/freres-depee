@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Paladin
 #name 40 Destrier
 #displayname [FDP] Paladin 40 : Destrier

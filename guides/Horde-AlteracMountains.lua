@@ -16,6 +16,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 30-31 Alterac Mountains
 #displayname [FDP] Alterac Mountains (30-31)

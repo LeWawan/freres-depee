@@ -22,6 +22,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 33-36 Stranglethorn Vale
 #displayname [FDP] Stranglethorn Vale (33-36)

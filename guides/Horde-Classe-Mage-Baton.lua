@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Mage
 #name 10 Bâton de mage
 #displayname [FDP] Mage 10 : Bâton de mage

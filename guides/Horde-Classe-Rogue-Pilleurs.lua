@@ -4,6 +4,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Rogue
 #name 16 Piller les Pilleurs
 #displayname [FDP] Voleur 16 : Piller les Pilleurs

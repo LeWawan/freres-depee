@@ -15,6 +15,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 30-40 Scarlet Monastery
 #displayname [FDP] Monastère écarlate (30-40)

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 10 Marcheur du Vide
 #displayname [FDP] Démoniste 10 : Marcheur du Vide

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warrior
 #name 20 Bouclier de Ruga
 #displayname [FDP] Guerrier 20 : Bouclier de Ruga

@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Druid
 #name 20 Forme de félin
 #displayname [FDP] Druide 20 : Forme de félin

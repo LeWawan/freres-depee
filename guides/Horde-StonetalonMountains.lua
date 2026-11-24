@@ -9,6 +9,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 22-23 Stonetalon Mountains
 #displayname [FDP] Stonetalon Mountains (22-23)

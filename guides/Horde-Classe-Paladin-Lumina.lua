@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Paladin
 #name 18 Lumina Chantelevent
 #displayname [FDP] Paladin 18 : Lumina Chantelevent

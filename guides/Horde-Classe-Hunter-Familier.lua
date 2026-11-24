@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Hunter
 #name 10 Dompter la bête
 #displayname [FDP] Chasseur 10 : Dompter la bête

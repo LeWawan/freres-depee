@@ -10,6 +10,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 35-40 The Drowned City
 #displayname [FDP] Cité submergée (35-40)

@@ -4,6 +4,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Warlock
 #name 40 Palefroi corrompu
 #displayname [FDP] Démoniste 40 : Palefroi corrompu

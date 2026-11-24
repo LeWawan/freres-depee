@@ -14,6 +14,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde
 #name 37-44 Uldaman
 #displayname [FDP] Uldaman (37-44)

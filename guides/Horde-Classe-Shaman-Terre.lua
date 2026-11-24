@@ -5,6 +5,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Shaman
 #name 4 Totem de terre
 #displayname [FDP] Chaman 4 : Totem de terre

@@ -6,6 +6,7 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 
 RXPGuides.RegisterGuide([[
 #classic
+#forever
 << Horde Rogue
 #name 24 Ravenholdt
 #displayname [FDP] Voleur 24 : Ravenholdt
