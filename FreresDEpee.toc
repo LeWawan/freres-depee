@@ -36,6 +36,7 @@ guides/Horde-Felwood.lua
 guides/Horde-BurningSteppes.lua
 guides/Horde-BlastedLands.lua
 guides/Horde-WesternPlaguelands.lua
+guides/Horde-Winterspring.lua
 guides/Horde-Classe-Druid-Ours.lua
 guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua
