@@ -18,6 +18,8 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 --   (envois vers Arathi / Riverglades),
 --   95322-95327 (chaîne commencée aux Riverglades), 1116 Poussière de rêve (Marais des chagrins),
 --   1261 Marg parle (Marécage d'Âprefange, 5 %).
+-- Deuxième passage, faites ou coupées dans le guide Stranglethorn Vale 2 : 349, 585, 586, 588,
+--   589, 591, 592, 593, 607, 613, 619, 621, 624, 625, 626, 1127, 7810, 7838, 8551, 9259, 97047, 97048.
 -- Donjon (Cité submergée, guide de donjon à faire) : 95775, 95776, 95789, 95791 et la suite 96078.
 
 RXPGuides.RegisterGuide([[

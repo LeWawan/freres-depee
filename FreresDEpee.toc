@@ -19,6 +19,7 @@ guides/Horde-ThousandNeedles.lua
 guides/Horde-AlteracMountains.lua
 guides/Horde-Desolace.lua
 guides/Horde-StranglethornVale.lua
+guides/Horde-StranglethornVale2.lua
 guides/Horde-ArathiHighlands.lua
 guides/Horde-Riverglades.lua
 guides/Horde-SwampOfSorrows.lua
