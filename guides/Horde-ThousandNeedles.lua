@@ -3,6 +3,18 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- Indépendant des autres régions : les quêtes venues d'ailleurs sont protégées par
 -- .isOnQuest / .isQuestTurnedIn, et les quêtes à forte XP dont le prérequis manque
 -- sont signalées par les étapes d'alerte en tête de guide.
+-- Coupées : 1107 Les nageoires incrustées (murlocs Saltscale de Strangleronce, autre
+-- continent), 1108/1137 (Badlands, voir ce guide), 1190/1194 (suite de 1137, coupée dans le
+-- guide Badlands), 1191/1192 (répétables, sans XP), 1111/1112/1114 Kravel (aller-retour à
+-- Ratchet, niveau 30), 1115/1117 (Baie-du-Butin, 1115 rendue par le guide Strangleronce),
+-- 1180-1182 Mécénat gobelin (faites par le guide Strangleronce), 1183 (donnée à Baie-du-Butin,
+-- autre continent) et ses suites 1186-1189 (niveau 37-41, aller-retour à Gadgetzan), 1148/1184 Des parties de l'essaim
+-- (départ sur un butin, ~45 kills en duo, rendues à la Croisée puis à Orgrimmar), 1152/1154/6627
+-- L'épreuve de la Connaissance (Serres-Rocheuses et Ashenvale), 1159/6628 (guide du Monastère
+-- écarlate), 1394 Le dernier voyage (rendue ici après le Monastère écarlate, autre continent),
+-- 5088 Arikara (suite de 5062 rendue à Thunder Bluff), 5361 Arbre familial (niveau 32 requis,
+-- rendue en Désolace), 4542 Un message pour le poste de Librevent (bon de route de 510 xp vers
+-- 4841 au Grand élévateur, à valider en jeu).
 -- Données : QuestieDB Forever (tools/questiedb.py). Syntaxe : docs/rxp-custom-guides.md.
 
 RXPGuides.RegisterGuide([[

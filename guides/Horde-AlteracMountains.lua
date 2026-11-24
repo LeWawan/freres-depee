@@ -11,7 +11,9 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- Questie, second aller-retour à Dalaran), 7321 Bisque de tortue (~69 kills pour 2500 xp),
 -- 515/517/524 Elixir d'agonie (potion d'alchimie requise), 518-521 Couronne de Volonté
 -- (élites 36-43), 1136 Gueule-glacée (niveau 37,
--- rendue à Thunder Bluff), quêtes de la Cité de Dalaran (donjon Forever).
+-- rendue à Thunder Bluff), quêtes de la Cité de Dalaran (donjon Forever), 509/513, 528/529/532,
+-- 567 et 98094/98095 (faites par le guide Hillsbrad), 546 Souvenirs de morts (30 crânes à 38 %
+-- = ~159 kills en duo pour 2550 xp).
 -- Données : QuestieDB Forever (tools/questiedb.py). Syntaxe : docs/rxp-custom-guides.md.
 
 RXPGuides.RegisterGuide([[

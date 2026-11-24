@@ -12,7 +12,10 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- des élites), 652/688 Fozruk (élite 42 qui patrouille), 671/673 Magies immondes (~53 kills,
 -- puis Marez Cowl élite 40), 679/680 (élites 38-40 de Stromgarde), 92867 Une position à tenir
 -- (élites de Stromgarde), 687 (Badlands), 635 (drop aléatoire), 6622 (Secourisme),
--- 95663 (Wetlands), 667/670 (après Baie-du-Butin).
+-- 95663 (Wetlands), 667/670 (après Baie-du-Butin), 656 L'invocation de la Princesse (suite de
+-- 692, coupée dans le guide Badlands, niveau 50), 79624/79677/79678 N'importe qui peut cuisiner
+-- (chaîne de la Saison de la Découverte, niveau 40, recette de départ sur les ogres à taux
+-- inconnu).
 -- Données : QuestieDB Forever (tools/questiedb.py). Syntaxe : docs/rxp-custom-guides.md.
 
 RXPGuides.RegisterGuide([[

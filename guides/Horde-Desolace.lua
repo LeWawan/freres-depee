@@ -16,7 +16,16 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- Gizelton (attente imprévisible), 6132/6134 Brimbuzzle (niveau 34, escorte en village
 -- maraudine 37-40, spectres à l'extrême sud-est), 1367/1368 et suites centaures
 -- (réputation Amical à farmer, chaînes Forever 92xxx/93xxx sans XP connue),
--- 5763 Chasse à Strangleronce (rendu sur un autre continent).
+-- 5763 Chasse à Strangleronce (rendu sur un autre continent), 1361 Regthar Deathgate (lettre
+-- donnée à Moulin-de-Tarren ou Orgrimmar, rendue dans les Barrens, 640 xp), 1369/1370 et suites
+-- 1371, 1373-1375, 1380/1381 (réputation Amical magram ou gelkis à farmer, 1371 demande un
+-- objet d'ingénieur), 92743 (suite de 1369, couronne des Badlands), 92754/92755/92814/92817/92818
+-- (objets d'artisanat et réputation Amical), 92811/92812 Guerre économique (répétables, sans
+-- XP), 94872/94873 Acheter leur amitié (390 xp, rendues aux villages magram et gelkis hors
+-- route), 93225 Totems centaures sculptés (5 totems, taux inconnu = ~29 kills en duo pour
+-- 2350 xp, à valider en jeu), 93465/93678 Notes sur la draenéthyste (chaîne du guide Swamp of
+-- Sorrows), 79229/79235/79236/79242 Crime de grand chemin (Saison de la Découverte, niveau 40,
+-- suites rendues à Baie-du-Butin et en Arathi).
 -- Les quêtes de Maraudon (7028, 7029, 7044, 7064, 7067) vont dans un guide de donjon.
 
 RXPGuides.RegisterGuide([[

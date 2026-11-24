@@ -5,6 +5,15 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- protégées par .isOnQuest / .isQuestTurnedIn pour qui ne l'a pas suivi.
 -- Route : Sun Rock, boucle nord (graines, Cénarius), Vallée calcinée (harpies, élémentaires),
 -- puis les Cisailles à l'est et sortie vers les Barrens par Seereth.
+-- Coupées : 1061/1063, 1093/1094, 6461, 6523, 6548/6629 (faites par le guide RestedXP 17-22),
+-- 1058 Magie de la forêt de Jin'Zil (acceptée par RestedXP sans être finie, 30 yeux, 5 sèves,
+-- 5 moustaches et une écaille = ~121 kills en duo pour 2100 xp), 1088/1089 Ordanus et L'Antre
+-- (suite de 1087, Ordanus est en Ashenvale, puis retour au pic des Serres-Rocheuses), 6421/6481
+-- Le ravin des Eboulis (niveau 18-20, grotte au sud hors route, 10 cristaux à ramasser), 6542
+-- Rapport à Kadrak (lettre vers les Barrens, 145 xp), 86576 Les babioles des Rougefuries
+-- (15 pierres, taux inconnu = ~86 kills en duo pour 2100 xp, à valider en jeu), 79980/79974
+-- (objets au sol après 79192, 79974 rendue au Loch Modan, autre continent), 80001 Rallumer
+-- (Saison de la Découverte, liste noire, sans XP).
 -- Données : QuestieDB Forever (tools/questiedb.py). Syntaxe : docs/rxp-custom-guides.md.
 
 RXPGuides.RegisterGuide([[

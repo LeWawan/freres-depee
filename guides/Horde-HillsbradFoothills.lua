@@ -4,6 +4,11 @@ if not RXPGuides then return end -- RestedXP absent : guides ignorés
 -- protégées par .isOnQuest / .isQuestTurnedIn, et la chaîne de Thunder Bluff manquée est
 -- signalée par l'étape d'alerte en tête de guide.
 -- Route de vitesse en duo : quêtes de collecte lentes et élites de Dun Garok coupées.
+-- Coupées : 496/499 L'élixir de souffrance (10 langues à 28 % et un ichor à 7 % = ~103 kills
+-- en duo pour 1925 xp), 501/502 L'élixir de douleur (10 fioles à 29 % = ~68 kills pour 4850 xp,
+-- 71 xp/kill), 546 Souvenirs de morts (30 crânes à 38 % = ~159 kills pour 2550 xp), 515/517/524
+-- L'élixir d'agonie (suite de 513 donnée à Undercity, potion d'alchimie requise, niveau 30, voir
+-- le guide Alterac), 541/550 La bataille d'Hillsbrad (Dun Garok, faites par le guide Alterac).
 -- Données : QuestieDB Forever (tools/questiedb.py). Syntaxe : docs/rxp-custom-guides.md.
 
 RXPGuides.RegisterGuide([[
