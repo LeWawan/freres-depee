@@ -74,7 +74,7 @@ for path in sys.argv[1:]:
                     if not gated and ((pre and not set(pre) & turned) or (grp and not set(grp) <= turned)):
                         err(f'{where}: prérequis de {qid} ({pre or grp}) pas rendus avant dans le guide')
                 elif kind == 'complete':
-                    if obj and int(obj) > objective_count(q):
+                    if obj and objective_count(q) and int(obj) > objective_count(q):  # 0 = objectifs absents de QuestieDB, RXP les lit en jeu
                         err(f'{where}: {qid} n\'a que {objective_count(q)} objectif(s), index {obj}')
                     if qid not in accepted and not guarded:
                         err(f'{where}: .complete {qid} sans .accept avant ni garde')
