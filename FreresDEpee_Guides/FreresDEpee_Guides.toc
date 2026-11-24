@@ -1,0 +1,95 @@
+## Interface: 16001
+## Title: Frères d'Épée - Guides
+## Notes: Guides RestedXP de la route Frères d'Épée.
+## Author: LeWawan
+## Version: 1.6.0
+## X-License: MIT
+## Dependencies: FreresDEpee
+## OptionalDeps: RXPGuides
+
+Guides.lua
+guides/Horde-StonetalonMountains.lua
+guides/Horde-HillsbradFoothills.lua
+guides/Horde-Ashenvale.lua
+guides/Horde-ThousandNeedles.lua
+guides/Horde-AlteracMountains.lua
+guides/Horde-Desolace.lua
+guides/Horde-StranglethornVale.lua
+guides/Horde-StranglethornVale2.lua
+guides/Horde-ArathiHighlands.lua
+guides/Horde-Riverglades.lua
+guides/Horde-DustwallowMarsh.lua
+guides/Horde-SwampOfSorrows.lua
+guides/Horde-Badlands.lua
+guides/Horde-Shendralas.lua
+guides/Horde-Feralas.lua
+guides/Horde-Tanaris.lua
+guides/Horde-Hinterlands.lua
+guides/Horde-SearingGorge.lua
+guides/Horde-Azshara.lua
+guides/Horde-UngoroCrater.lua
+guides/Horde-Felwood.lua
+guides/Horde-BurningSteppes.lua
+guides/Horde-BlastedLands.lua
+guides/Horde-WesternPlaguelands.lua
+guides/Horde-Winterspring.lua
+guides/Horde-MountHyjal.lua
+guides/Horde-EasternPlaguelands.lua
+guides/Horde-Silithus.lua
+guides/Horde-Classe-Druid-Ours.lua
+guides/Horde-Classe-Druid-Poison.lua
+guides/Horde-Classe-Druid-Aquatique.lua
+guides/Horde-Classe-Druid-Felin.lua
+guides/Horde-Classe-Hunter-Familier.lua
+guides/Horde-Classe-Mage-Baton.lua
+guides/Horde-Classe-Mage-Robe.lua
+guides/Horde-Classe-Mage-Neant.lua
+guides/Horde-Classe-Paladin-Lumiere.lua
+guides/Horde-Classe-Paladin-Bandarion.lua
+guides/Horde-Classe-Paladin-Divinite.lua
+guides/Horde-Classe-Paladin-Lumina.lua
+guides/Horde-Classe-Paladin-Destrier.lua
+guides/Horde-Classe-Priest-Robe.lua
+guides/Horde-Classe-Rogue-Malice.lua
+guides/Horde-Classe-Rogue-Outils.lua
+guides/Horde-Classe-Rogue-Pilleurs.lua
+guides/Horde-Classe-Rogue-Poisons.lua
+guides/Horde-Classe-Rogue-Ravenholdt.lua
+guides/Horde-Classe-Rogue-Stromgarde.lua
+guides/Horde-Classe-Shaman-Terre.lua
+guides/Horde-Classe-Shaman-Feu.lua
+guides/Horde-Classe-Shaman-Eau.lua
+guides/Horde-Classe-Shaman-Air.lua
+guides/Horde-Classe-Warlock-Marcheur.lua
+guides/Horde-Classe-Warlock-Incube.lua
+guides/Horde-Classe-Warlock-Succube.lua
+guides/Horde-Classe-Warlock-Felhunter.lua
+guides/Horde-Classe-Warlock-Robe.lua
+guides/Horde-Classe-Warlock-Orahil.lua
+guides/Horde-Classe-Warlock-Felsteed.lua
+guides/Horde-Classe-Warlock-Kroshius.lua
+guides/Horde-Classe-Warrior-Arme.lua
+guides/Horde-Classe-Warrior-Ruga.lua
+guides/Horde-Classe-Warrior-Berserker.lua
+guides/Horde-Classe-Warrior-Tourbillon.lua
+guides/Horde-Donjon-Ragefeu.lua
+guides/Horde-Donjon-Lamentations.lua
+guides/Horde-Donjon-RuinesLordaeron.lua
+guides/Horde-Donjon-Ombrecroc.lua
+guides/Horde-Donjon-Brassenoire.lua
+guides/Horde-Donjon-Tranchebauge.lua
+guides/Horde-Donjon-Gnomeregan.lua
+guides/Horde-Donjon-ExcavationsPaluns.lua
+guides/Horde-Donjon-Dalaran.lua
+guides/Horde-Donjon-MonastereEcarlate.lua
+guides/Horde-Donjon-SouillesTranchebauge.lua
+guides/Horde-Donjon-CiteSubmergee.lua
+guides/Horde-Donjon-ZulFarrak.lua
+guides/Horde-Donjon-Maraudon.lua
+guides/Horde-Donjon-TempleEnglouti.lua
+guides/Horde-Donjon-ProfondeursRochenoire.lua
+guides/Horde-Donjon-PicRochenoire.lua
+guides/Horde-Donjon-HacheTripes.lua
+guides/Horde-Donjon-Scholomance.lua
+guides/Horde-Donjon-Stratholme.lua
+guides/Horde-Donjon-Uldaman.lua

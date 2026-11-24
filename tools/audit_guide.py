@@ -1,12 +1,12 @@
 """Second check of RXP guides against QuestieDB Forever, after lint_guide.py.
 
-    WOW_ADDONS=... python3 -I tools/audit_guide.py guides/*.lua
+    WOW_ADDONS=... python3 -I tools/audit_guide.py FreresDEpee_Guides/guides/*.lua
 
 lint_guide.py checks that RXP can run a guide. This script checks that the guide is right
 and that its metadata follows the conventions in docs/guides-handover.md:
 
 - header: #classic, << Horde, #name '<min>-<max> X', #displayname '[FDP] ... (<min>-<max>)'
-  matching #name, #version, known #group / #subgroup, file listed in FreresDEpee.toc;
+  matching #name, #version, known #group / #subgroup, file listed in FreresDEpee_Guides.toc;
 - #next targets exist among the shipped guides;
 - region guides end on a #label step with a manual checkbox;
 - every .accept / .turnin names, with .target, an NPC that starts / ends the quest, and its
@@ -66,10 +66,10 @@ def npc_list(field):
     if isinstance(field, list) and field and field[0]: return field[0]
     return []
 
-toc = open(os.path.join(ROOT, 'FreresDEpee.toc'), encoding='utf-8').read()
+toc = open(os.path.join(ROOT, 'FreresDEpee_Guides', 'FreresDEpee_Guides.toc'), encoding='utf-8').read()
 files = sys.argv[1:]
 guides = {}  # (group, name) -> path, over every shipped guide so #next can be resolved
-for path in glob.glob(os.path.join(ROOT, 'guides', '*.lua')):
+for path in glob.glob(os.path.join(ROOT, 'FreresDEpee_Guides', 'guides', '*.lua')):
     for g in re.findall(r'RegisterGuide\(\[\[(.*?)\]\]\)', open(path, encoding='utf-8').read(), re.S):
         n = re.search(r'^\s*#name (.*)$', g, re.M); gr = re.search(r'^\s*#group (.*)$', g, re.M)
         if n and gr: guides[(gr.group(1).strip(), n.group(1).strip())] = path
@@ -94,7 +94,7 @@ def comment_ids(text):
 
 for path in files:
     base = os.path.basename(path)
-    if f'guides/{base}' not in toc: err(f'{base}: absent de FreresDEpee.toc')
+    if f'guides/{base}' not in toc: err(f'{base}: absent de FreresDEpee_Guides.toc')
     text = open(path, encoding='utf-8').read()
     for g in re.findall(r'RegisterGuide\(\[\[(.*?)\]\]\)', text, re.S):
         g = re.sub(r'--[^\n]*', '', g)

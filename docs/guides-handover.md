@@ -1,13 +1,13 @@
 # Writing FDP guides: handover
 
-Notes for anyone (human or agent) adding a RestedXP guide to `guides/`. Read
+Notes for anyone (human or agent) adding a RestedXP guide to `FreresDEpee_Guides/guides/`. Read
 [`rxp-custom-guides.md`](rxp-custom-guides.md) for the full command list.
 
 ## Scope
 
 - **Start at 22.** RestedXP's free "Speedrun Guide 1-22" covers 1-22 in French. Don't copy
   RestedXP guides: they are CC BY-NC-SA 4.0, this repo is MIT. Build routes from QuestieDB.
-- **The reference is `guides/Horde-ThousandNeedles.lua`.** It works well in game: copy its
+- **The reference is `FreresDEpee_Guides/guides/Horde-ThousandNeedles.lua`.** It works well in game: copy its
   structure (alert stickies, `.isOnQuest`/`.isQuestTurnedIn` guards, `.goto x,y,R` radii,
   `#completewith` travel chains, level gates, numeric ids, closing `#label`).
 - **Testing.** The game always runs the local copy: `scripts/link.sh` links the repo into
@@ -23,7 +23,7 @@ Notes for anyone (human or agent) adding a RestedXP guide to `guides/`. Read
   levels.
 - **Quest data.** QuestieDB Forever is the source of truth for ids, levels, prerequisites,
   givers, spawns and objectives. Check every quest against it, not against Wowhead.
-- **Where guides live.** One file per guide in `guides/`, listed in `FreresDEpee.toc`. Each
+- **Where guides live.** One file per guide in `FreresDEpee_Guides/guides/`, listed in `FreresDEpee_Guides/FreresDEpee_Guides.toc`. Each
   file starts with `if not RXPGuides then return end`, so the addon loads fine without
   RestedXP (`OptionalDeps: RXPGuides` makes RXP load first when present).
 
@@ -123,7 +123,7 @@ All checked in the RXPGuides source.
 - Prefer `#next` over a `.next` step element: no official guide uses `.next`, and a `.next`
   step that jumps back creates a loop.
 - A `#next` pointing to a guide that isn't shipped does nothing. Keep the chain to guides in
-  `guides/`.
+  `FreresDEpee_Guides/guides/`.
 
 ## Independence: quests from other regions
 
@@ -277,7 +277,7 @@ Other Forever additions: Shen'dralas, Mount Hyjal (60), Excavation Site: Wetland
 Modelled on RXP's `RestedXP Forever Dungeon Guide (H)` (`RXPGuides/Guides/forever/dungeon/`).
 
 - One self-contained guide per dungeon: travel to the givers, accept, run, turn in,
-  follow-ups. File `guides/<Faction>-Donjon-<Dungeon>.lua`, `#group Guide FDP Donjons (Horde)`,
+  follow-ups. File `FreresDEpee_Guides/guides/<Faction>-Donjon-<Dungeon>.lua`, `#group Guide FDP Donjons (Horde)`,
   `#subgroup Donjons`, `#name <min>-<max> <Dungeon>`.
 - Quests started by a drop inside the dungeon get their own accept step after the drop.
 - Dungeon quests set aside by the region guides, for the next dungeon guides:
@@ -297,7 +297,7 @@ export WOW_ADDONS=".../World of Warcraft/_forever_/Interface/AddOns"
 python3 -I tools/questiedb.py quest 4821   # one quest, all fields
 python3 -I tools/questiedb.py npc 4630
 python3 -I tools/questiedb.py zone 400     # every quest whose zoneOrSort is 400 (Thousand Needles)
-python3 -I tools/lint_guide.py guides/*.lua
+python3 -I tools/lint_guide.py FreresDEpee_Guides/guides/*.lua
 ```
 
 - `questiedb.py` decodes QuestieDB Forever: base64 CBOR rows stored as
@@ -323,10 +323,10 @@ Other data worth knowing:
 
 1. List the zone's quests with `questiedb.py zone <areaId>`, filter them with the rules
    above and pick the route.
-2. Write `guides/<Faction>-<Zone>.lua` with the header conventions, add it to
-   `FreresDEpee.toc` and mention it in the README "Dependencies" section (both languages).
-3. Run `python3 -I tools/lint_guide.py guides/*.lua` and `python3 -I tools/audit_guide.py
-   guides/*.lua` (0 errors each, read every warning), `luac5.1 -p guides/*.lua`, then
+2. Write `FreresDEpee_Guides/guides/<Faction>-<Zone>.lua` with the header conventions, add it to
+   `FreresDEpee_Guides/FreresDEpee_Guides.toc` and mention it in the README "Dependencies" section (both languages).
+3. Run `python3 -I tools/lint_guide.py FreresDEpee_Guides/guides/*.lua` and `python3 -I tools/audit_guide.py
+   FreresDEpee_Guides/guides/*.lua` (0 errors each, read every warning), `luac5.1 -p FreresDEpee_Guides/guides/*.lua`, then
    `lua5.1 tests/smoke.lua .`. List every cut quest in the header comment, under `Coupées`:
    the audit warns about zone quests that are neither in the guide nor in that list.
 4. Test in game: `/reload`, check chat for "Error parsing guide", load the guide from the

@@ -1,6 +1,6 @@
 """Lint RXP guides against the RXPGuides parser rules and QuestieDB Forever.
 
-    WOW_ADDONS=... python3 -I tools/lint_guide.py guides/*.lua
+    WOW_ADDONS=... python3 -I tools/lint_guide.py FreresDEpee_Guides/guides/*.lua
 
 Checks: every step has an element that can complete (RXP skips a step made only of
 text-only elements, GuideWindow.lua UpdateStepCompletion), labels exist, quest ids exist,
