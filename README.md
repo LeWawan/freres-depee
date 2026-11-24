@@ -41,7 +41,7 @@ Drag the panel by its header. Right-click the header to put it back in place.
 ## Dependencies
 
 - **Questie** (with QuestieDB) is installed alongside by the CurseForge app: it provides quest chains, prerequisites and quest givers. Without it, the Quest Chain panel only shows what the game knows about the quest.
-- **RestedXP Guides** is optional. When installed, the Guide FDP shows up in its menu: a Horde speed route from level 22 to 37, after RestedXP's own 1-22 guide (Stonetalon, Hillsbrad, Ashenvale, Thousand Needles, Alterac, Desolace, Stranglethorn, Arathi, work in progress), class quest guides for every Horde class, and dungeon guides from Ragefire Chasm to Uldaman, Forever dungeons included. Without it, the guides are skipped.
+- **RestedXP Guides** is optional. When installed, the Guide FDP shows up in its menu: a Horde speed route from level 22 to 60, after RestedXP's own 1-22 guide (Stonetalon, Hillsbrad, Ashenvale, Thousand Needles, Alterac, Desolace, Stranglethorn, Arathi, Riverglades, Badlands, Swamp of Sorrows, Stranglethorn again, Dustwallow Marsh, Shen'dralas, Feralas, Tanaris, the Hinterlands, Searing Gorge, Azshara, Un'Goro, Felwood, Burning Steppes, Blasted Lands, Western Plaguelands, Winterspring, Mount Hyjal, Eastern Plaguelands, Silithus), class quest guides for every Horde class, and dungeon guides from Ragefire Chasm to Stratholme (Gnomeregan included, reached through Booty Bay), Forever dungeons included. Without it, the guides are skipped.
 - The Auto part works on its own.
 
 ## Feedback
@@ -126,7 +126,7 @@ Le panneau se déplace par son en-tête. Un clic droit sur l'en-tête le remet �
 ## Dépendances
 
 - **Questie** (avec QuestieDB) est installé en même temps par l'appli CurseForge : il fournit les données des suites de quêtes, des prérequis et des donneurs. Sans lui, le panneau Quest Chain n'affiche que ce que le jeu sait de la quête.
-- **RestedXP Guides** est optionnel. S'il est installé, le Guide FDP apparaît dans son menu : une route Horde rapide du niveau 22 à 37, après le guide 1-22 de RestedXP (Serres-Rocheuses, Hillsbrad, Orneval, Mille pointes, Alterac, Désolace, Strangleronce, Arathi, en cours d'écriture), des guides de quêtes de classe pour toutes les classes Horde, et des guides de donjon du Gouffre de Ragefeu à Uldaman, donjons de Forever compris. Sans lui, les guides sont ignorés.
+- **RestedXP Guides** est optionnel. S'il est installé, le Guide FDP apparaît dans son menu : une route Horde rapide du niveau 22 à 60, après le guide 1-22 de RestedXP (Serres-Rocheuses, Hillsbrad, Orneval, Mille pointes, Alterac, Désolace, Strangleronce, Arathi, Rives Claires, Terres ingrates, Marais des Chagrins, Strangleronce encore, Marécage d'Âprefange, Shen'dralas, Féralas, Tanaris, les Hinterlands, Gorge des Vents brûlants, Azshara, Un'Goro, Gangrebois, Steppes ardentes, Terres foudroyées, Maleterres de l'Ouest, Berceau-de-l'Hiver, mont Hyjal, Maleterres de l'Est, Silithus), des guides de quêtes de classe pour toutes les classes Horde, et des guides de donjon du Gouffre de Ragefeu à Stratholme (Gnomeregan compris, par Baie-du-Butin), donjons de Forever compris. Sans lui, les guides sont ignorés.
 - La partie Auto fonctionne seule.
 
 ## Retours
