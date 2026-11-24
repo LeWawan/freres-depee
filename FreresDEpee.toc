@@ -95,4 +95,5 @@ guides/Horde-Donjon-ProfondeursRochenoire.lua
 guides/Horde-Donjon-PicRochenoire.lua
 guides/Horde-Donjon-HacheTripes.lua
 guides/Horde-Donjon-Scholomance.lua
+guides/Horde-Donjon-Stratholme.lua
 guides/Horde-Donjon-Uldaman.lua
