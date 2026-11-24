@@ -1,5 +1,51 @@
 # Changelog
 
+# [1.7.0](https://github.com/LeWawan/freres-depee/compare/v1.6.0...v1.7.0) (2026-11-24)
+
+
+### Bug Fixes
+
+* accept objective indexes that QuestieDB lacks in the guide lint ([91ef89e](https://github.com/LeWawan/freres-depee/commit/91ef89efff990d0b1d730ac17ffd6db671dc1094))
+* add the closing step to the Ashenvale guide ([92f0580](https://github.com/LeWawan/freres-depee/commit/92f0580ed244567091f33bfeaba3274530495153))
+* correct the Deathstalker Agent position in the Excavation guide ([0ca7941](https://github.com/LeWawan/freres-depee/commit/0ca79418723d393e50d0896028726e20ad61e5cc))
+* restore the zimmix chain in the stranglethorn guide ([3bb6502](https://github.com/LeWawan/freres-depee/commit/3bb6502b1442d198aae417c8e6ce4a9aa421677b))
+
+
+### Features
+
+* add an audit tool for guide data and metadata ([c43e22c](https://github.com/LeWawan/freres-depee/commit/c43e22c08a79cb58c3bc3d6671348873a95259f1))
+* add the azshara guide ([56bbae7](https://github.com/LeWawan/freres-depee/commit/56bbae7137f4eb120b8c54c6cb7ff18bde3146d0))
+* add the badlands guide ([c931fd5](https://github.com/LeWawan/freres-depee/commit/c931fd5c94e91e81ae3980a1f52ac155d8534681))
+* add the blackrock depths dungeon guide ([3e932d0](https://github.com/LeWawan/freres-depee/commit/3e932d05d7c8aa532a5f02f6927bef7c84afe1e0))
+* add the blasted lands guide ([910be37](https://github.com/LeWawan/freres-depee/commit/910be3751d241c522a84a31c72ab6cb96bbfef9d))
+* add the burning steppes guide ([814f66a](https://github.com/LeWawan/freres-depee/commit/814f66a480968f009bdede8b9922cbadf4ac224e))
+* add the dire maul dungeon guide ([45b23fd](https://github.com/LeWawan/freres-depee/commit/45b23fd7e76cbb29109cec01b3e520305767e0da))
+* add the dustwallow marsh guide ([e764711](https://github.com/LeWawan/freres-depee/commit/e764711fad2a724fa0301bb900b6e1ee37bbd051))
+* add the eastern plaguelands guide ([54c44ef](https://github.com/LeWawan/freres-depee/commit/54c44ef460515999512c505da15c39265b145750))
+* add the felwood guide ([204f40e](https://github.com/LeWawan/freres-depee/commit/204f40ebda638ab5fb1426cc9f94ee31fe819805))
+* add the feralas guide ([161e089](https://github.com/LeWawan/freres-depee/commit/161e0892c9b679902d12003a6633ca2c5de54ddf))
+* add the gnomeregan dungeon guide ([513abae](https://github.com/LeWawan/freres-depee/commit/513abae6fe1ec2f4a2bb5ecc416407b4f46ab33f))
+* add the hinterlands guide ([94aceed](https://github.com/LeWawan/freres-depee/commit/94aceed5d94db5f02f1b517f297de0a77d80d05c))
+* add the lower blackrock spire dungeon guide ([25c8819](https://github.com/LeWawan/freres-depee/commit/25c88194eca8c95a2c582d83ab837d44823225fc))
+* add the maraudon dungeon guide ([2cb4ef3](https://github.com/LeWawan/freres-depee/commit/2cb4ef3c1140be4ba97b32cadf286b39dc09b896))
+* add the mount hyjal guide ([8d70db3](https://github.com/LeWawan/freres-depee/commit/8d70db34e6208a603ea0684e290776849834ff29))
+* add the riverglades guide ([0cba816](https://github.com/LeWawan/freres-depee/commit/0cba81631116fe6ba5697cb4384e70c800500139))
+* add the scholomance dungeon guide ([fca1dad](https://github.com/LeWawan/freres-depee/commit/fca1dad9cf71c6e87fafd14cea05b7f270f7152a))
+* add the searing gorge guide ([e9ba08b](https://github.com/LeWawan/freres-depee/commit/e9ba08b3e1339417ef320187107677fe28d0dd86))
+* add the second stranglethorn guide ([35c14a2](https://github.com/LeWawan/freres-depee/commit/35c14a2df6fa1069b65bb669d66f8dca0d2c2f49))
+* add the shen'dralas guide ([194546c](https://github.com/LeWawan/freres-depee/commit/194546cf14d6f6640db595a546b09bdd8ddff6b0))
+* add the silithus guide ([907e7a8](https://github.com/LeWawan/freres-depee/commit/907e7a8480f0e0e79cb886aa15a282f43ac1c716))
+* add the stratholme dungeon guide ([b0b67da](https://github.com/LeWawan/freres-depee/commit/b0b67da1e4cdd4c18ad95f332f2f17225677ffff))
+* add the sunken temple dungeon guide ([d12a084](https://github.com/LeWawan/freres-depee/commit/d12a084a748e4ee60e79144967f4420fd4590cdc))
+* add the swamp of sorrows guide ([e8628f2](https://github.com/LeWawan/freres-depee/commit/e8628f2d8d0b08013d9f6a43656c090125106229))
+* add the tanaris guide ([3927482](https://github.com/LeWawan/freres-depee/commit/3927482f1265f29f7c05c9826d22d380ed4e9a86))
+* add the un'goro crater guide ([9790b22](https://github.com/LeWawan/freres-depee/commit/9790b2216626739930fb5c6dc43ce61657d10757))
+* add the western plaguelands guide ([1fd062c](https://github.com/LeWawan/freres-depee/commit/1fd062c2b34cc91d78f403d5b23dc4b1e3e2bd7b))
+* add the winterspring guide ([1aeeb68](https://github.com/LeWawan/freres-depee/commit/1aeeb685139bc4a9043855a16cefda8f48ba9c54))
+* add the zul'farrak dungeon guide ([2351642](https://github.com/LeWawan/freres-depee/commit/2351642fecc83884390cab88bcd88974fd20a0f5))
+* show the region guide names in French ([c764e82](https://github.com/LeWawan/freres-depee/commit/c764e82f90cc420da5e4523d50a26a62f5c07d6e))
+* tag every guide with #forever like the official guides ([dfefe1e](https://github.com/LeWawan/freres-depee/commit/dfefe1e12fdef133fe8edec7d4bec6120545d946)), closes [#forever](https://github.com/LeWawan/freres-depee/issues/forever)
+
 # [1.6.0](https://github.com/LeWawan/freres-depee/compare/v1.5.0...v1.6.0) (2026-11-16)
 
 
