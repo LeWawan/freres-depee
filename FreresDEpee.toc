@@ -38,6 +38,7 @@ guides/Horde-BlastedLands.lua
 guides/Horde-WesternPlaguelands.lua
 guides/Horde-Winterspring.lua
 guides/Horde-MountHyjal.lua
+guides/Horde-EasternPlaguelands.lua
 guides/Horde-Classe-Druid-Ours.lua
 guides/Horde-Classe-Druid-Poison.lua
 guides/Horde-Classe-Druid-Aquatique.lua
