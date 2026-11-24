@@ -1,152 +1,53 @@
--- Frères d'Épée : hub QOL. Automatisations (ce fichier) et Quest Chain (QuestChain.lua, Profit.lua, Data.lua).
--- Maintenir Maj (Shift) suspend toutes les automatisations le temps de l'interaction.
--- /fdp ouvre la fenêtre d'options ; /fdp <id>, /fdp duo, /fdp solo pilotent Quest Chain.
+-- Frères d'Épée : noyau. Fenêtre d'options (/fdp), réglages partagés (FreresDEpeeDB) et
+-- activation des modules. Chaque module est un addon à part (FreresDEpee_*) : on le coupe dans
+-- la colonne de gauche de /fdp ou dans la liste des addons du jeu, puis on recharge l'interface.
 
 local _, ns = ...
+FreresDEpee = ns -- les modules s'y enregistrent avec ns.Register
 
-local DEFAULTS = {
-    sellJunk = true, repair = true, guildRepair = false, summary = true,
-    questAccept = false, questTurnIn = false, acceptRes = true,
-    qcEnabled = true, qcNpc = true, qcLog = true,
+local MODULES = { -- dossier de l'addon et libellé, dans l'ordre de la fenêtre
+    { "FreresDEpee_Auto", "Auto" },
+    { "FreresDEpee_QuestChain", "Quest Chain" },
+    { "FreresDEpee_Macros", "Macros" },
+    { "FreresDEpee_Guides", "Guides" },
 }
 
-local TABS = { -- onglets de la fenêtre et leurs cases, dans l'ordre d'affichage
-    { "Auto", {
-        { "sellJunk", "Vendre les objets gris" },
-        { "repair", "Réparer l'équipement" },
-        { "guildRepair", "Avec la banque de guilde", indent = true },
-        { "acceptRes", "Accepter les résurrections hors combat" },
-        { "summary", "Bilan dans le chat" },
-        { "questAccept", "Accepter les quêtes" },
-        { "questTurnIn", "Rendre les quêtes terminées" },
-    } },
-    { "Quest Chain", {
-        { "qcEnabled", "Afficher le panneau Quest Chain" },
-        { "qcNpc", "À côté de la fenêtre du PNJ", indent = true },
-        { "qcLog", "À côté du journal de quêtes", indent = true },
-        { "duo", "Rentabilité calculée en duo", tbl = function() return ns.Profit.DB() end },
-        { button = "Réinitialiser la position", run = function() ns.ResetQuestChainPos() end },
-    } },
-}
+local registered, commands, fallback = {}, {}, nil
 
-local db
-local function say(msg) if db.summary then print("|cffffd100Frères d'Épée|r " .. msg) end end
-local function money(c) return C_CurrencyInfo.GetCoinText(c) end
-local function paused() return IsShiftKeyDown() end
-
--- Marchand ----------------------------------------------------------------
-
-local sellTicker
-
-local function stopSelling()
-    if sellTicker then sellTicker:Cancel(); sellTicker = nil end
+-- Lu à la demande : les SavedVariables du noyau sont chargées avant les modules, pas avant ce fichier.
+function ns.DB()
+    FreresDEpeeDB = FreresDEpeeDB or {}
+    return FreresDEpeeDB
 end
 
-local function sellJunk()
-    local items, total = {}, 0
-    for bag = 0, NUM_BAG_SLOTS do
-        for slot = 1, C_Container.GetContainerNumSlots(bag) do
-            local info = C_Container.GetContainerItemInfo(bag, slot)
-            if info and info.quality == Enum.ItemQuality.Poor and not info.hasNoValue then
-                local price = select(11, C_Item.GetItemInfo(info.itemID)) or 0
-                if price > 0 then
-                    items[#items + 1] = { bag, slot }
-                    total = total + price * info.stackCount
-                end
-            end
-        end
-    end
-    if #items == 0 then return end
-    -- Un objet tous les 0,1 s : vendre tout d'un coup en fait sauter une partie.
-    local i = 0
-    sellTicker = C_Timer.NewTicker(0.1, function()
-        i = i + 1
-        if not MerchantFrame:IsShown() then return stopSelling() end
-        -- l'emplacement a pu changer depuis la liste (objet déplacé) : on ne vend que s'il est encore gris
-        local info = C_Container.GetContainerItemInfo(items[i][1], items[i][2])
-        if info and info.quality == Enum.ItemQuality.Poor then C_Container.UseContainerItem(items[i][1], items[i][2]) end
-        if i == #items then
-            sellTicker = nil
-            say("Gris vendus pour " .. money(total) .. ".")
-        end
-    end, #items)
+-- spec = { defaults = {...}, rows = {...}, commands = { mot = fn(reste) }, fallback = fn(msg) }
+-- rows : { clé, libellé [, indent, tbl] }, { button, run }, { edit = clé, label }, { note }
+function ns.Register(addon, spec)
+    local db = ns.DB()
+    for k, v in pairs(spec.defaults or {}) do if db[k] == nil then db[k] = v end end
+    for word, fn in pairs(spec.commands or {}) do commands[word] = fn end
+    fallback = spec.fallback or fallback
+    registered[addon] = spec
+    return db
 end
 
-local function repair()
-    if not CanMerchantRepair() then return end
-    local cost, canRepair = GetRepairAllCost()
-    if not canRepair or cost == 0 then return end
-    if db.guildRepair and IsInGuild() and CanGuildBankRepair() then
-        RepairAllItems(true) -- fonds de guilde, puis le reste sur l'or perso si la limite est atteinte
-    end
-    RepairAllItems()
-    say("Réparé pour " .. money(cost) .. ".")
+-- API des addons : C_AddOns sur ce client, globales sur les plus anciens.
+local A = C_AddOns or {}
+local function me() return UnitName("player") end
+local function exists(name)
+    local ok, _, _, _, _, reason = pcall(A.GetAddOnInfo or GetAddOnInfo, name)
+    return ok and reason ~= "MISSING"
 end
-
--- Quêtes ------------------------------------------------------------------
-
-local function onQuestEvent(event, arg1)
-    if event == "QUEST_DETAIL" and db.questAccept then
-        if QuestGetAutoAccept() then CloseQuest() else AcceptQuest() end
-    elseif event == "QUEST_ACCEPT_CONFIRM" and db.questAccept then
-        ConfirmAcceptQuest()
-        StaticPopup_Hide("QUEST_ACCEPT")
-    elseif event == "QUEST_PROGRESS" and db.questTurnIn then
-        if IsQuestCompletable() and not QuestRequiresGold() then CompleteQuest() end
-    elseif event == "QUEST_COMPLETE" and db.questTurnIn then
-        if GetNumQuestChoices() <= 1 then GetQuestReward(GetNumQuestChoices()) end
-    elseif event == "QUEST_GREETING" then
-        if db.questTurnIn then
-            for i = 1, GetNumActiveQuests() do
-                if select(2, GetActiveTitle(i)) then return SelectActiveQuest(i) end
-            end
-        end
-        if db.questAccept and GetNumAvailableQuests() > 0 then SelectAvailableQuest(1) end
-    elseif event == "GOSSIP_SHOW" then
-        if db.questTurnIn then
-            for _, q in ipairs(C_GossipInfo.GetActiveQuests()) do
-                if q.isComplete then return C_GossipInfo.SelectActiveQuest(q.questID) end
-            end
-        end
-        if db.questAccept then
-            local q = C_GossipInfo.GetAvailableQuests()[1]
-            if q then C_GossipInfo.SelectAvailableQuest(q.questID) end
-        end
-    end
+local function isLoaded(name) return (A.IsAddOnLoaded or IsAddOnLoaded)(name) and true or false end
+local function isEnabled(name)
+    local state
+    if A.GetAddOnEnableState then state = A.GetAddOnEnableState(name, me())
+    else state = GetAddOnEnableState(me(), name) end
+    return (tonumber(state) or 0) > 0
 end
-
--- Événements --------------------------------------------------------------
-
-local f = CreateFrame("Frame")
-for _, e in ipairs({ "ADDON_LOADED", "MERCHANT_SHOW", "MERCHANT_CLOSED", "RESURRECT_REQUEST",
-    "QUEST_DETAIL", "QUEST_ACCEPT_CONFIRM", "QUEST_PROGRESS", "QUEST_COMPLETE", "QUEST_GREETING", "GOSSIP_SHOW" }) do
-    f:RegisterEvent(e)
+local function setEnabled(name, on)
+    if on then (A.EnableAddOn or EnableAddOn)(name, me()) else (A.DisableAddOn or DisableAddOn)(name, me()) end
 end
-
-f:SetScript("OnEvent", function(_, event, arg1)
-    if event == "ADDON_LOADED" then
-        if arg1 ~= "FreresDEpee" then return end
-        FreresDEpeeDB = FreresDEpeeDB or {}
-        db = FreresDEpeeDB
-        ns.db = db
-        for k, v in pairs(DEFAULTS) do if db[k] == nil then db[k] = v end end
-        f:UnregisterEvent("ADDON_LOADED")
-    elseif event == "MERCHANT_CLOSED" then
-        stopSelling()
-    elseif paused() then
-        return
-    elseif event == "MERCHANT_SHOW" then
-        if db.sellJunk then sellJunk() end
-        if db.repair then repair() end
-    elseif event == "RESURRECT_REQUEST" then
-        if db.acceptRes and not UnitAffectingCombat(arg1) then
-            AcceptResurrect()
-            StaticPopup_Hide("RESURRECT_NO_TIMER")
-        end
-    else
-        onQuestEvent(event, arg1)
-    end
-end)
 
 -- Fenêtre d'options (/fdp) -------------------------------------------------
 -- Construite au premier /fdp. Déplaçable, Échap la ferme.
@@ -158,8 +59,9 @@ local FLAT = "Interface\\Buttons\\WHITE8x8"
 local C = {
     bg = { 0.05, 0.05, 0.07, 0.96 }, border = { 0.85, 0.65, 0.25, 0.55 }, header = { 0.11, 0.09, 0.06, 1 },
     accent = { 1, 0.82, 0.2 }, kicker = { 0.85, 0.65, 0.25 }, muted = { 0.54, 0.54, 0.59 },
+    text = { 0.9, 0.9, 0.9 }, off = { 0.35, 0.35, 0.38 },
 }
-local W, HEAD, TABH, ROW, PAD = 320, 52, 26, 26, 12
+local SIDE, MAIN, HEAD, ROW, PAD = 140, 320, 52, 26, 12
 
 local function tex(parent, layer, color, a)
     local t = parent:CreateTexture(nil, layer)
@@ -172,19 +74,26 @@ local function flatFrame(f, bg, border)
     f:SetBackdrop({ bgFile = FLAT, edgeFile = FLAT, edgeSize = 1 })
     f:SetBackdropColor(unpack(bg)); f:SetBackdropBorderColor(unpack(border))
 end
+ns.flatFrame, ns.tex, ns.C = flatFrame, tex, C -- réutilisés par les fenêtres des modules
+
+-- Case plate 14×14 avec marque dorée ; renvoie la marque.
+local function box(parent)
+    local b = CreateFrame("Frame", nil, parent, "BackdropTemplate")
+    b:SetSize(14, 14)
+    flatFrame(b, { 0, 0, 0, 0.5 }, C.border)
+    local mark = tex(b, "ARTWORK", C.accent); mark:SetPoint("TOPLEFT", 3, -3); mark:SetPoint("BOTTOMRIGHT", -3, 3)
+    return b, mark
+end
 
 -- Ligne cliquable : case plate + libellé.
 local function checkRow(page, y, opt)
-    local key, tbl = opt[1], opt.tbl or function() return db end
+    local key, tbl = opt[1], opt.tbl or ns.DB
     local row = CreateFrame("Button", nil, page)
     row:SetPoint("TOPLEFT", 0, y); row:SetPoint("RIGHT"); row:SetHeight(ROW - 2)
     local hl = tex(row, "BACKGROUND", { 1, 1, 1 }, 0.05); hl:SetAllPoints(); hl:Hide()
-    local box = CreateFrame("Frame", nil, row, "BackdropTemplate")
-    box:SetSize(14, 14); box:SetPoint("LEFT", opt.indent and 24 or 6, 0)
-    flatFrame(box, { 0, 0, 0, 0.5 }, C.border)
-    local mark = tex(box, "ARTWORK", C.accent); mark:SetPoint("TOPLEFT", 3, -3); mark:SetPoint("BOTTOMRIGHT", -3, 3)
+    local b, mark = box(row); b:SetPoint("LEFT", opt.indent and 24 or 6, 0)
     local label = row:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-    label:SetPoint("LEFT", box, "RIGHT", 8, 0); label:SetText(opt[2])
+    label:SetPoint("LEFT", b, "RIGHT", 8, 0); label:SetText(opt[2])
     local function refresh() mark:SetShown(tbl()[key] and true or false) end
     row:SetScript("OnShow", refresh)
     row:SetScript("OnEnter", function() hl:Show() end)
@@ -193,22 +102,70 @@ local function checkRow(page, y, opt)
     refresh()
 end
 
-local function actionRow(page, y, opt)
-    local b = CreateFrame("Button", nil, page, "BackdropTemplate")
-    b:SetSize(190, ROW - 6); b:SetPoint("TOPLEFT", 6, y - 4)
+local function button(parent, text, w, run)
+    local b = CreateFrame("Button", nil, parent, "BackdropTemplate")
+    b:SetSize(w, ROW - 6)
     flatFrame(b, { 1, 0.82, 0.2, 0.08 }, C.border)
-    local t = b:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall"); t:SetPoint("CENTER"); t:SetText(opt.button)
+    local t = b:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall"); t:SetPoint("CENTER"); t:SetText(text)
+    b.label = t
     b:SetScript("OnEnter", function() b:SetBackdropColor(1, 0.82, 0.2, 0.18) end)
     b:SetScript("OnLeave", function() b:SetBackdropColor(1, 0.82, 0.2, 0.08) end)
-    b:SetScript("OnClick", opt.run)
+    b:SetScript("OnClick", run)
+    return b
+end
+ns.Button = button
+
+local function actionRow(page, y, opt)
+    button(page, opt.button, 190, opt.run):SetPoint("TOPLEFT", 6, y - 4)
+end
+
+-- Libellé + champ texte enregistré dans la clé opt.edit.
+local function editRow(page, y, opt)
+    local label = page:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
+    label:SetPoint("TOPLEFT", 6, y - 6); label:SetText(opt.label)
+    local e = CreateFrame("EditBox", nil, page, "BackdropTemplate")
+    e:SetSize(150, ROW - 6); e:SetPoint("TOPRIGHT", -6, y - 2)
+    flatFrame(e, { 0, 0, 0, 0.5 }, C.border)
+    e:SetFontObject("GameFontHighlightSmall"); e:SetTextInsets(6, 6, 0, 0); e:SetAutoFocus(false)
+    e:SetScript("OnShow", function() e:SetText(ns.DB()[opt.edit] or "") end)
+    e:SetScript("OnTextChanged", function(_, user) if user then ns.DB()[opt.edit] = e:GetText() end end)
+    e:SetScript("OnEnterPressed", e.ClearFocus)
+    e:SetScript("OnEscapePressed", e.ClearFocus)
+    e:SetText(ns.DB()[opt.edit] or "")
+end
+
+local function noteRow(page, y, text)
+    local t = page:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
+    t:SetPoint("TOPLEFT", 6, y - 6); t:SetPoint("RIGHT", -6, 0); t:SetJustifyH("LEFT"); t:SetText(text)
+end
+
+local function buildPage(page, addon)
+    local spec = registered[addon]
+    if not spec then
+        noteRow(page, 0, isEnabled(addon) and "Recharge l'interface pour charger ce module."
+            or "Module désactivé. Active-le à gauche, puis recharge l'interface.")
+        return
+    end
+    for j, opt in ipairs(spec.rows or {}) do
+        local y = -(j - 1) * ROW
+        if opt.button then actionRow(page, y, opt)
+        elseif opt.edit then editRow(page, y, opt)
+        elseif opt.note then noteRow(page, y, opt.note)
+        else checkRow(page, y, opt) end
+    end
 end
 
 local function buildWindow()
-    local rows = 0
-    for _, tab in ipairs(TABS) do rows = math.max(rows, #tab[2]) end
+    local mods, rows = {}, 6
+    for _, m in ipairs(MODULES) do
+        if exists(m[1]) then
+            mods[#mods + 1] = m
+            if registered[m[1]] then rows = math.max(rows, #(registered[m[1]].rows or {})) end
+        end
+    end
 
     win = CreateFrame("Frame", "FreresDEpeeFrame", UIParent, "BackdropTemplate")
-    win:SetSize(W, HEAD + TABH + PAD + rows * ROW + 30)
+    win:SetSize(SIDE + MAIN, HEAD + PAD + rows * ROW + 40)
     win:SetPoint("CENTER")
     win:SetFrameStrata("HIGH")
     win:SetClampedToScreen(true)
@@ -232,50 +189,82 @@ local function buildWindow()
     local close = CreateFrame("Button", nil, win, "UIPanelCloseButton")
     close:SetPoint("TOPRIGHT", 1, 1); close:SetScale(0.8); close:SetFrameLevel(head:GetFrameLevel() + 5)
 
-    -- onglets : texte doré et soulignement pour l'actif
-    local tabs, pages = {}, {}
-    local tabW = (W - 2) / #TABS
-    local function show(n)
-        for i, t in ipairs(tabs) do
-            local on = i == n
-            pages[i]:SetShown(on); t.under:SetShown(on)
-            t.label:SetTextColor(unpack(on and C.accent or C.muted))
+    -- colonne de gauche : un module par ligne, case = activé (prend effet au rechargement)
+    local sep = tex(win, "ARTWORK", C.border, 0.25)
+    sep:SetPoint("TOPLEFT", SIDE, -HEAD); sep:SetPoint("BOTTOMLEFT", SIDE, 1); sep:SetWidth(1)
+    local reload = button(win, "Recharger pour appliquer", 170, ReloadUI)
+    reload:SetPoint("BOTTOMRIGHT", -PAD, 8)
+
+    local items, pages, current = {}, {}, nil
+    local function refresh()
+        local pending = false
+        for i, m in ipairs(mods) do
+            local it, on = items[i], isEnabled(m[1])
+            it.mark:SetShown(on)
+            if on ~= isLoaded(m[1]) then pending = true end
+            local col = i == current and C.accent or (on and isLoaded(m[1])) and C.text or C.off
+            it.label:SetTextColor(unpack(col))
+            it.under:SetShown(i == current)
         end
+        reload:SetShown(pending)
     end
-    local tline = tex(win, "ARTWORK", C.border, 0.25)
-    tline:SetPoint("TOPLEFT", 1, -HEAD - TABH); tline:SetPoint("TOPRIGHT", -1, -HEAD - TABH); tline:SetHeight(1)
-
-    for i, tab in ipairs(TABS) do
-        local t = CreateFrame("Button", nil, win)
-        t:SetSize(tabW, TABH); t:SetPoint("TOPLEFT", 1 + (i - 1) * tabW, -HEAD)
-        local hl = tex(t, "BACKGROUND", { 1, 1, 1 }, 0.04); hl:SetAllPoints(); hl:Hide()
-        t.label = t:CreateFontString(nil, "OVERLAY", "GameFontNormal"); t.label:SetPoint("CENTER"); t.label:SetText(tab[1])
-        t.under = tex(t, "OVERLAY", C.accent); t.under:SetPoint("BOTTOMLEFT", 10, 0); t.under:SetPoint("BOTTOMRIGHT", -10, 0); t.under:SetHeight(2)
-        t:SetScript("OnEnter", function() hl:Show() end)
-        t:SetScript("OnLeave", function() hl:Hide() end)
-        t:SetScript("OnClick", function() show(i) end)
-        tabs[i] = t
-
-        local page = CreateFrame("Frame", nil, win)
-        page:SetPoint("TOPLEFT", PAD - 4, -HEAD - TABH - PAD / 2)
-        page:SetPoint("BOTTOMRIGHT", -PAD + 4, 28)
-        pages[i] = page
-        for j, opt in ipairs(tab[2]) do
-            local y = -(j - 1) * ROW
-            if opt.button then actionRow(page, y, opt) else checkRow(page, y, opt) end
+    local function show(n)
+        current = n
+        for i, m in ipairs(mods) do
+            if i == n and not pages[i] then
+                pages[i] = CreateFrame("Frame", nil, win)
+                pages[i]:SetPoint("TOPLEFT", SIDE + PAD - 4, -HEAD - PAD / 2)
+                pages[i]:SetPoint("BOTTOMRIGHT", -PAD + 4, 36)
+                buildPage(pages[i], m[1])
+            end
+            if pages[i] then pages[i]:SetShown(i == n) end
         end
+        refresh()
+    end
+
+    for i, m in ipairs(mods) do
+        local it = CreateFrame("Button", nil, win)
+        it:SetSize(SIDE - 2, ROW); it:SetPoint("TOPLEFT", 1, -HEAD - PAD / 2 - (i - 1) * ROW)
+        local hl = tex(it, "BACKGROUND", { 1, 1, 1 }, 0.04); hl:SetAllPoints(); hl:Hide()
+        it.label = it:CreateFontString(nil, "OVERLAY", "GameFontNormal"); it.label:SetPoint("LEFT", PAD, 0); it.label:SetText(m[2])
+        it.under = tex(it, "OVERLAY", C.accent); it.under:SetPoint("TOPLEFT", 0, -3); it.under:SetPoint("BOTTOMLEFT", 0, 3); it.under:SetWidth(2)
+        it:SetScript("OnEnter", function() hl:Show() end)
+        it:SetScript("OnLeave", function() hl:Hide() end)
+        it:SetScript("OnClick", function() show(i) end)
+        local power = CreateFrame("Button", nil, it)
+        power:SetSize(20, 20); power:SetPoint("RIGHT", -8, 0)
+        local b; b, it.mark = box(power); b:SetPoint("CENTER")
+        power:SetScript("OnClick", function() setEnabled(m[1], not isEnabled(m[1])); refresh() end)
+        power:SetScript("OnEnter", function()
+            GameTooltip:SetOwner(power, "ANCHOR_RIGHT")
+            GameTooltip:SetText("Activer ou désactiver le module")
+            GameTooltip:AddLine("Prend effet au rechargement de l'interface.", 1, 1, 1)
+            GameTooltip:Show()
+        end)
+        power:SetScript("OnLeave", function() GameTooltip:Hide() end)
+        items[i] = it
     end
 
     local hint = win:CreateFontString(nil, "OVERLAY", "GameFontDisableSmall")
-    hint:SetPoint("BOTTOMLEFT", PAD, 10)
-    hint:SetText("Maj (Shift) enfoncé : rien d'automatique")
+    hint:SetPoint("BOTTOMLEFT", PAD, 14)
+    hint:SetText("Case : module activé")
+    win:SetScript("OnShow", refresh)
     show(1)
 end
 
 SLASH_FRERESDEPEE1 = "/fdp"
 SlashCmdList.FRERESDEPEE = function(msg)
-    msg = strtrim(msg or ""):lower()
-    if msg ~= "" then return ns.QuestChainCommand(msg) end
-    if not win then buildWindow() return end
-    win:SetShown(not win:IsShown())
+    msg = strtrim(msg or "")
+    local word, rest = msg:match("^(%S*)%s*(.-)$")
+    word = word:lower()
+    if word == "" then
+        if not win then buildWindow() return end
+        win:SetShown(not win:IsShown())
+    elseif commands[word] then
+        commands[word](rest)
+    elseif fallback then
+        fallback(msg:lower())
+    else
+        print("|cffffd100Frères d'Épée|r /fdp ouvre les options.")
+    end
 end

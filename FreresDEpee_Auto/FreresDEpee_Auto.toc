@@ -1,0 +1,9 @@
+## Interface: 16001
+## Title: Frères d'Épée - Auto
+## Notes: Vend les gris, répare, accepte les quêtes et les résurrections.
+## Author: LeWawan
+## Version: 1.6.0
+## X-License: MIT
+## Dependencies: FreresDEpee
+
+Auto.lua
