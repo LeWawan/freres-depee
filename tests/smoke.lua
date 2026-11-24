@@ -77,18 +77,27 @@ end })
 
 ---------------------------------------------------------------- chargement
 
-local toc = assert(io.open(root .. "/FreresDEpee.toc")):read("*a")
+-- Le noyau, puis chaque module (FreresDEpee_*) comme le jeu : ils partagent le global FreresDEpee.
+-- Les fichiers dans un sous-dossier (guides/) sont sautés : RestedXP n'est pas simulé.
+-- Comme le jeu : ADDON_LOADED de chaque addon juste après ses fichiers, avant le module suivant.
 local ns = {}
-for file in toc:gmatch("\n([%w_]+%.lua)") do
-    assert(loadfile(root .. "/" .. file))("FreresDEpee", ns)
-end
 local function fire(event, ...)
     for _, f in ipairs(frames) do
         local h = f.scripts.OnEvent
         if h then h(f, event, ...) end
     end
 end
-fire("ADDON_LOADED", "FreresDEpee")
+local function loadToc(dir, name)
+    local toc = assert(io.open(root .. dir .. name .. ".toc")):read("*a")
+    for file in toc:gmatch("\n([%w_]+%.lua)") do
+        assert(loadfile(root .. dir .. file))(name, ns)
+    end
+    fire("ADDON_LOADED", name)
+end
+loadToc("/", "FreresDEpee")
+for _, m in ipairs({ "FreresDEpee_Auto", "FreresDEpee_QuestChain", "FreresDEpee_Macros", "FreresDEpee_Guides" }) do
+    loadToc("/" .. m .. "/", m)
+end
 fire("PLAYER_LOGIN")
 
 ---------------------------------------------------------------- scénario
@@ -119,6 +128,37 @@ expect("rafraîchissement", "choisie 59 affiché")
 QuestFrame.visible = false
 ns.Update(); flush()
 expect("PNJ fermé", "rien d'ouvert")
+
+-- Macros : un pack s'importe sans jeton restant.
+local created = {}
+GetMacroIndexByName = function() return 0 end
+CreateMacro = function(name, _, body) created[#created + 1] = body; return 1 end
+InCombatLockdown = function() return false end
+C_Spell = { GetSpellName = function(id) return "Sort" .. id end }
+C_Item = setmetatable({ GetItemSubClassInfo = function() return "Boucliers" end }, { __index = nilspace })
+ns.ImportMacros(ns.MacroPacks.WARRIOR[2][2], { dps = "DPS Fast", tank = "Tank" })
+expect("import d'un pack de macros", "4 créée(s)")
+for _, body in ipairs(created) do
+    if body:find("{", 1, true) then io.stderr:write("ÉCHEC jeton non remplacé : ", body, "\n"); os.exit(1) end
+end
+if not created[1]:find("/equipset [equipped:Boucliers] DPS Fast", 1, true) then
+    io.stderr:write("ÉCHEC variable {dps} : ", created[1], "\n"); os.exit(1)
+end
+ns.ImportMacros("### Test\n/equipset {pvp}", {})
+expect("variable sans valeur refusée", "non importée : Test ({pvp} sans valeur)")
+ns.AskImportMacros(ns.MacroPacks.WARRIOR[1][2]) -- défauts connus, rien d'écrasé : import direct
+expect("import direct sans formulaire", "3 créée(s)")
+if not created[#created]:find("/equipset tank", 1, true) then
+    io.stderr:write("ÉCHEC défaut de {tank} : ", created[#created], "\n"); os.exit(1)
+end
+GetMacroIndexByName = function() return 1 end
+ns.AskImportMacros(ns.MacroPacks.WARRIOR[1][2]) -- remplace des macros : ouvre le formulaire
+io.stdout:write("ok   formulaire des variables\n")
+
+-- Fenêtres : /fdp (modules à gauche) et /fdp macros se construisent sans erreur.
+SlashCmdList.FRERESDEPEE("")
+SlashCmdList.FRERESDEPEE("macros")
+io.stdout:write("ok   fenêtres /fdp et /fdp macros\n")
 
 for _, l in ipairs(log) do
     if l:find("erreur", 1, true) then io.stderr:write("ÉCHEC erreur Lua : ", l, "\n"); os.exit(1) end
