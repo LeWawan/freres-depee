@@ -3,7 +3,7 @@
 ## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Guides RestedXP de la route Frères d'Épée.
 ## Author: LeWawan
-## Version: 1.6.0
+## Version: 1.8.0
 ## X-License: MIT
 ## Dependencies: FreresDEpee
 ## OptionalDeps: RXPGuides

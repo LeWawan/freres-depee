@@ -3,7 +3,7 @@
 ## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Chaîne complète de chaque quête, prérequis et rentabilité.
 ## Author: LeWawan
-## Version: 1.6.0
+## Version: 1.8.0
 ## X-License: MIT
 ## Dependencies: FreresDEpee
 ## OptionalDeps: QuestieDB, Questie

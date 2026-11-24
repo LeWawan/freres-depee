@@ -1,5 +1,14 @@
 # Changelog
 
+# [1.8.0](https://github.com/LeWawan/freres-depee/compare/v1.7.0...v1.8.0) (2026-11-24)
+
+
+### Features
+
+* **macros:** import and export macros as text with variables and class packs ([749e643](https://github.com/LeWawan/freres-depee/commit/749e64358614a261c50d0755eb89ef56c88feb7d))
+* show the logo next to each module in the addon list ([8b09643](https://github.com/LeWawan/freres-depee/commit/8b096436cf61ad9e29095bc7df5b644e18d63d7f))
+* split the core from the automations and toggle modules from /fdp ([3c76b03](https://github.com/LeWawan/freres-depee/commit/3c76b03a2c9d90f44b0dfabfefe2a015ec382396))
+
 # [1.7.0](https://github.com/LeWawan/freres-depee/compare/v1.6.0...v1.7.0) (2026-11-24)
 
 
