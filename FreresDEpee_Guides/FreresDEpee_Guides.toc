@@ -1,5 +1,6 @@
 ## Interface: 16001
 ## Title: Frères d'Épée - Guides
+## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Guides RestedXP de la route Frères d'Épée.
 ## Author: LeWawan
 ## Version: 1.6.0

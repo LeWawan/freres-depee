@@ -22,7 +22,8 @@ optional-dependencies:
 
 ignore:
   - .github
-  - media
+  - media/logo.png
+  - media/logo.svg
   - scripts
   - tests
   - tools

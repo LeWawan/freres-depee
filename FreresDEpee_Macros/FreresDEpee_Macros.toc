@@ -1,5 +1,6 @@
 ## Interface: 16001
 ## Title: Frères d'Épée - Macros
+## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Import et export de macros en texte, packs par classe.
 ## Author: LeWawan
 ## Version: 1.6.0

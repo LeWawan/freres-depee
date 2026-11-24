@@ -1,5 +1,6 @@
 ## Interface: 16001
 ## Title: Frères d'Épée - Auto
+## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Vend les gris, répare, accepte les quêtes et les résurrections.
 ## Author: LeWawan
 ## Version: 1.6.0

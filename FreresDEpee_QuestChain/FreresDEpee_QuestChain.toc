@@ -1,5 +1,6 @@
 ## Interface: 16001
 ## Title: Frères d'Épée - Quest Chain
+## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Chaîne complète de chaque quête, prérequis et rentabilité.
 ## Author: LeWawan
 ## Version: 1.6.0

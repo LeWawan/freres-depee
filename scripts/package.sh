@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Construit dist/FreresDEpee-<version>.zip à la main, pour un téléversement manuel sur CurseForge.
-# Le zip contient le noyau FreresDEpee/ (son .toc, LICENSE, CHANGELOG.md) et un dossier par module
+# Le zip contient le noyau FreresDEpee/ (son .toc, LICENSE, CHANGELOG.md, l'icône) et un dossier par module
 # FreresDEpee_*/ avec les fichiers de son .toc, comme le paquet de .pkgmeta.
 set -euo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
@@ -17,7 +17,7 @@ copy() { # dossier source, dossier du zip, fichiers
     mkdir -p "$stage/$dst"
     (cd "$src" && cp --parents "$@" "$stage/$dst/")
 }
-copy . FreresDEpee FreresDEpee.toc LICENSE CHANGELOG.md $(tocfiles FreresDEpee.toc)
+copy . FreresDEpee FreresDEpee.toc LICENSE CHANGELOG.md media/icon.tga $(tocfiles FreresDEpee.toc)
 for dir in FreresDEpee_*/; do
     m=${dir%/}
     copy "$m" "$m" "$m.toc" $(tocfiles "$m/$m.toc")

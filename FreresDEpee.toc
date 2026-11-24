@@ -1,5 +1,6 @@
 ## Interface: 16001
 ## Title: Frères d'Épée
+## IconTexture: Interface\AddOns\FreresDEpee\media\icon
 ## Notes: Noyau : fenêtre d'options /fdp et activation des modules (Auto, Quest Chain, Macros, Guides).
 ## Author: LeWawan
 ## Version: 1.7.0
