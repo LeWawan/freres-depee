@@ -1,6 +1,13 @@
 # Paquet construit par BigWigsMods/packager (voir .github/workflows/release.yml).
 package-as: FreresDEpee
 
+# Chaque module est un addon à part, à côté du noyau dans le zip.
+move-folders:
+  FreresDEpee/FreresDEpee_Auto: FreresDEpee_Auto
+  FreresDEpee/FreresDEpee_QuestChain: FreresDEpee_QuestChain
+  FreresDEpee/FreresDEpee_Macros: FreresDEpee_Macros
+  FreresDEpee/FreresDEpee_Guides: FreresDEpee_Guides
+
 manual-changelog:
   filename: CHANGELOG.md
   markup-type: markdown
@@ -9,7 +16,7 @@ manual-changelog:
 required-dependencies:
   - questie
 
-# RestedXP : seulement pour le Guide FDP (guides/), ignoré s'il est absent.
+# RestedXP : seulement pour le module Guides, ignoré s'il est absent.
 optional-dependencies:
   - restedxp-guide
 

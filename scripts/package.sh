@@ -1,20 +1,29 @@
 #!/usr/bin/env bash
 # Construit dist/FreresDEpee-<version>.zip à la main, pour un téléversement manuel sur CurseForge.
-# Le zip contient un seul dossier FreresDEpee/ : les fichiers du .toc, LICENSE et CHANGELOG.md.
+# Le zip contient le noyau FreresDEpee/ (son .toc, LICENSE, CHANGELOG.md) et un dossier par module
+# FreresDEpee_*/ avec les fichiers de son .toc, comme le paquet de .pkgmeta.
 set -euo pipefail
 root=$(cd "$(dirname "$0")/.." && pwd)
 cd "$root"
 version=$(sed -n 's/^## Version: *//p' FreresDEpee.toc | tr -d '\r')
-files=(FreresDEpee.toc LICENSE CHANGELOG.md $(sed -n 's/\r//; /^[^#].*\.lua$/p' FreresDEpee.toc))
-for f in "${files[@]}"; do [[ $f == *.lua ]] && luac5.1 -p "$f"; done
+tocfiles() { sed -n 's/\r//; /^[^#].*\.lua$/p' "$1"; }
 lua5.1 tests/smoke.lua . >/dev/null
 
 stage=$(mktemp -d)
 trap 'rm -rf "$stage"' EXIT
-mkdir "$stage/FreresDEpee"
-cp --parents "${files[@]}" "$stage/FreresDEpee/"
+copy() { # dossier source, dossier du zip, fichiers
+    local src=$1 dst=$2; shift 2
+    for f in "$@"; do [[ $f == *.lua ]] && luac5.1 -p "$src/$f"; done
+    mkdir -p "$stage/$dst"
+    (cd "$src" && cp --parents "$@" "$stage/$dst/")
+}
+copy . FreresDEpee FreresDEpee.toc LICENSE CHANGELOG.md $(tocfiles FreresDEpee.toc)
+for dir in FreresDEpee_*/; do
+    m=${dir%/}
+    copy "$m" "$m" "$m.toc" $(tocfiles "$m/$m.toc")
+done
 mkdir -p dist
 out="$root/dist/FreresDEpee-$version.zip"
 rm -f "$out"
-(cd "$stage" && zip -qr "$out" FreresDEpee)
-unzip -l "$out"
+(cd "$stage" && zip -qr "$out" .)
+unzip -l "$out" | tail -n +4 | awk '{print $4}' | cut -d/ -f1 | sort | uniq -c
