@@ -29,11 +29,35 @@ A panel opens next to the NPC's quest window or the quest log and shows:
 
 Drag the panel by its header. Right-click the header to put it back in place.
 
+## Macros
+
+Import and export macros as text in the window opened by `/fdp macros` or from `/fdp` > Macros, one block per macro.
+
+```
+### Burst
+#showtooltip {spell:12328}
+/cast {spell:12328}
+/use 13
+```
+
+- `### Name` starts a macro (16 characters at most); lines starting with `--` are comments.
+- `{spell:ID}` becomes the spell's name in your client's language, so one text works in every locale.
+- `{name}` is a variable with any name you like. On import, a form asks for each value, offers your equipment sets as buttons, and remembers it for next time. `@var name = default | help` gives a variable its suggested value and an explanation. The form only opens when a value is missing or the import replaces existing macros. Packs assume equipment sets named in lowercase, `dps` and `tank`. Saved values are in `/fdp` > Macros > Saved variables.
+- `{shields}` becomes the shield category for `[equipped:...]`.
+- A macro with the same name is rewritten in place, once the import form has listed it. Otherwise it is created in the character or account tab, as set in the options.
+- **Export** writes your current macros in the same format, ready to share.
+- **Class packs** ship with the addon (warrior for now): a pack opens in the window, you check it, then import.
+
+## Modules
+
+**Auto**, **Quest Chain**, **Macros** and **Guides** are separate addons. Switch any of them off in the game's AddOns list or in the left column of `/fdp`, then reload the interface. `Frères d'Épée` itself is the core they all need, with the `/fdp` window and the saved settings.
+
 ## Commands
 
 | Command | Effect |
 |---|---|
 | `/fdp` | Open or close the options window |
+| `/fdp macros` | Open the macro import/export window |
 | `/fdp <id>` | Show the chain of quest `<id>` |
 | `/fdp duo` / `/fdp solo` | Efficiency calculation mode |
 | `/fdp debug` | Explain in chat why the panel shows or not |
@@ -52,7 +76,7 @@ Found a bug or have an idea? Leave a comment. For a panel display issue, type `/
 
 ## Development
 
-The addon lives at the root of this repository, so the repository itself can be the addon folder.
+The core addon lives at the root of this repository and each module in a `FreresDEpee_*` folder; `link.sh` links each of them into the AddOns folder.
 
 ```bash
 # play the working copy in game: links the repo into the AddOns folder (safe to rerun)
@@ -62,13 +86,16 @@ export WOW_ADDONS="/path/to/World of Warcraft/_forever_/Interface/AddOns"
 
 | Path | Content |
 |---|---|
-| `FreresDEpee.toc`, `*.lua` | The addon. `Core.lua`: automations and the `/fdp` window. `QuestChain.lua`: the panel. `Profit.lua`: efficiency estimates and recorded runs. |
-| `guides/` | RestedXP guides, registered only when RXPGuides is loaded. |
+| `FreresDEpee.toc`, `Core.lua` | The core: the `/fdp` window, the module list and `ns.Register`, shared through the `FreresDEpee` global. |
+| `FreresDEpee_Auto/` | Junk selling, repairs, quest and resurrection automations. |
+| `FreresDEpee_QuestChain/` | `QuestChain.lua`: the panel. `Profit.lua`: efficiency estimates and recorded runs. |
+| `FreresDEpee_Macros/` | `Macros.lua`: import, export and tokens. `Packs.lua`: class packs. |
+| `FreresDEpee_Guides/` | RestedXP guides in `guides/`, registered only when RXPGuides is loaded. |
 | `docs/` | RestedXP guide syntax and the handover notes for writing new guides (`guides-handover.md`). |
 | `tools/` | `questiedb.py` reads QuestieDB Forever, `lint_guide.py` checks guides against it. Both need `WOW_ADDONS`. |
-| `tests/smoke.lua` | Loads the addon against a fake WoW API and runs the panel through its states. |
+| `tests/smoke.lua` | Loads the core and every module against a fake WoW API, runs the panel through its states, imports a macro pack and builds the windows. |
 | `scripts/package.sh` | Builds `dist/FreresDEpee-<version>.zip` for a manual upload. |
-| `scripts/link.sh` | Links the repo into the game's AddOns folder. |
+| `scripts/link.sh` | Links the core and each module into the game's AddOns folder. |
 | `media/` | Logo (SVG source and PNG). |
 | `.pkgmeta`, `.github/workflows/` | CI on every push, and a CurseForge and GitHub release on every `v*` tag. |
 
@@ -77,7 +104,7 @@ lua5.1 tests/smoke.lua .   # smoke test
 ./scripts/package.sh       # release zip
 ```
 
-The release workflow needs `## X-Curse-Project-ID` in the `.toc` and a `CF_API_KEY` repository secret to upload to CurseForge.
+The release workflow needs `## X-Curse-Project-ID` in `FreresDEpee.toc` and a `CF_API_KEY` repository secret to upload to CurseForge.
 
 Quest data comes from QuestieDB at runtime. Nothing from other addons is bundled.
 
@@ -114,11 +141,35 @@ Un panneau s'ouvre à côté de la fenêtre du PNJ ou du journal de quêtes et t
 
 Le panneau se déplace par son en-tête. Un clic droit sur l'en-tête le remet à sa place.
 
+## Macros
+
+Importe et exporte des macros en texte dans la fenêtre ouverte par `/fdp macros` ou depuis `/fdp` > Macros, un bloc par macro.
+
+```
+### Burst
+#showtooltip {spell:12328}
+/cast {spell:12328}
+/use 13
+```
+
+- `### Nom` commence une macro (16 caractères au plus) ; les lignes qui commencent par `--` sont des commentaires.
+- `{spell:ID}` devient le nom du sort dans la langue de ton client : un même texte marche partout.
+- `{nom}` est une variable, avec le nom que tu veux. À l'import, un formulaire demande chaque valeur, propose tes sets d'équipement en boutons, et la retient pour la fois suivante. `@var nom = défaut | aide` donne à une variable sa valeur proposée et une explication. Le formulaire ne s'ouvre que s'il manque une valeur ou si l'import remplace des macros existantes. Les packs partent de sets d'équipement nommés en minuscules, `dps` et `tank`. Les valeurs retenues sont dans `/fdp` > Macros > Variables enregistrées.
+- `{shields}` devient la catégorie bouclier pour `[equipped:...]`.
+- Une macro du même nom est réécrite sur place, une fois listée dans le formulaire d'import. Sinon elle est créée dans l'onglet personnage ou compte, selon le réglage.
+- **Exporter** écrit tes macros actuelles dans le même format, prêtes à partager.
+- **Des packs par classe** sont livrés avec l'addon (guerrier pour l'instant) : le pack s'ouvre dans la fenêtre, tu relis, puis tu importes.
+
+## Modules
+
+**Auto**, **Quest Chain**, **Macros** et **Guides** sont des addons à part. Coupe celui que tu veux dans la liste des addons du jeu ou dans la colonne de gauche de `/fdp`, puis recharge l'interface. `Frères d'Épée` lui-même est le noyau dont ils ont tous besoin, avec la fenêtre `/fdp` et les réglages enregistrés.
+
 ## Commandes
 
 | Commande | Effet |
 |---|---|
 | `/fdp` | Ouvre ou ferme la fenêtre d'options |
+| `/fdp macros` | Ouvre la fenêtre d'import et d'export des macros |
 | `/fdp <id>` | Affiche la suite de la quête `<id>` |
 | `/fdp duo` / `/fdp solo` | Mode de calcul de la rentabilité |
 | `/fdp debug` | Explique dans le chat pourquoi le panneau s'affiche ou non |

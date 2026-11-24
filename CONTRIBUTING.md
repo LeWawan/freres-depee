@@ -53,5 +53,5 @@ docs: explain the /fdp debug command
 
 ## Releases
 
-Don't edit the version in `FreresDEpee.toc` or the entries in `CHANGELOG.md` by hand, and
+Don't edit the version in the `.toc` files or the entries in `CHANGELOG.md` by hand, and
 don't push `v*` tags yourself. The release job takes care of all three.
