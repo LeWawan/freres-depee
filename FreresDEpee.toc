@@ -88,4 +88,5 @@ guides/Horde-Donjon-Dalaran.lua
 guides/Horde-Donjon-MonastereEcarlate.lua
 guides/Horde-Donjon-SouillesTranchebauge.lua
 guides/Horde-Donjon-CiteSubmergee.lua
+guides/Horde-Donjon-ZulFarrak.lua
 guides/Horde-Donjon-Uldaman.lua
