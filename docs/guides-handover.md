@@ -31,7 +31,7 @@ Notes for anyone (human or agent) adding a RestedXP guide to `guides/`. Read
 
 | Header | Value |
 |---|---|
-| `#classic` | always |
+| `#classic` | always, followed by `#forever` (the official Forever guides carry `#forever`; with both tags RXP loads the guide on both clients, `GuideLoader.lua:1171`) |
 | `<< Horde` | faction filter for the whole guide (add the class for class guides: `<< Horde Warrior`) |
 | `#name` | `<min>-<max> <Zone>`, starts with the minimum level: the linter reads it |
 | `#displayname` | `[FDP] <Zone> (<min>-<max>)` |
@@ -82,6 +82,35 @@ All checked in the RXPGuides source.
 - **No custom code.** `_G.RXPGuides` exposes only `RegisterGuide` and `ImportGuide`, and there
   is no `loadstring`. Anything beyond the documented commands is impossible inside a guide.
   Display tricks go in the addon itself (as the Quest Chain panel does).
+
+## Traps found while writing guides
+
+- **Forever XP** is in `QuestieDB/support/Forever/QuestXP/xpDB-traces.lua`. `xpDB-classic.lua`
+  only covers Classic quests.
+- **`.xp <N,1` skips the whole step**, turn-ins included. Never put a `.turnin` on a step that
+  has a level-gated `.accept`: split it into a turn-in step and a gated accept step.
+  `audit_guide.py` flags it.
+- **`disabledByQuest`**: while that quest is in the log, this one is not offered (Questie
+  `QuestieDB.lua:910`). Accept this one first (Rig Wars 2841 before Scooty 2842).
+- **`preQuestGroup`** means every listed quest must be turned in, **`preQuestSingle`** means any
+  one of them. Print them separately when routing.
+- **`.complete q,i` is done once the quest is complete** (`IsQuestTurnedIn(id) or
+  IsQuestComplete(id)`, `functions.lua` `UpdateQuestCompletionData`). Many Forever quests have
+  no objectives in QuestieDB: `.complete q,1` still works, and the lint accepts it.
+- **A step skipped by its guard never comes back.** A quest started by a drop must be turned in
+  after the last place the drop can happen, not before.
+- **Gather objects of a quest can't be looted before the quest is accepted.** No pre-collect.
+- **Race bit 32 is Skyborne**, playable by both factions. A mask of bit 32 only is not
+  Alliance.
+- **Blacklist hits under `LoadAutoBlacklistWotlk`** (`QuestieQuestBlacklist.lua:7309` and below)
+  don't apply to Forever (quest 1048 is one).
+- **`json.loads`** turns QuestieDB's integer dict keys (objectives `{3: [...]}`) into strings:
+  call `questiedb.get` again instead of reusing JSON dumps.
+- **Two drop tables** sit in `classicItemDrops.lua`: `wowheadData` first, then `cmangosData`.
+  Use the `wowheadData` rate when the item has one, the `cmangosData` rate otherwise, and
+  35 % when neither has it. Say which one in the header when a cut depends on it.
+- **Run both checks** on every guide: `lint_guide.py` (RXP can run it) and `audit_guide.py`
+  (it is right: givers, coordinates, faction, metadata, cuts).
 
 ## Chaining guides
 
@@ -238,11 +267,10 @@ Detailed rules:
 - **Missing data.** Some Forever objects have no spawns in QuestieDB. Point the step to the
   NPC or place named in the objective text and say so in a warning.
 
-Region candidates for the next guides (Horde, 37-45): Dustwallow Marsh, Swamp of Sorrows,
-Badlands, and **Riverglades** (Forever-only, 35-45, uiMap 2548, area
-16591; hub Rog'mar with Krom'rosh 256418 at 59.4,45.6, wind rider master Grakna 255993,
-innkeeper Toka 256675; ship to Tanaris from 78.1,51.9). Other Forever additions:
-Shen'dralas, Mount Hyjal (60), Excavation Site: Wetlands.
+Region candidates for the next guides (Horde, 40-50): Dustwallow Marsh, Swamp of Sorrows,
+Badlands. Riverglades (Forever-only, uiMap 2548, area 16591) has its guide,
+`Horde-Riverglades.lua`; its Forever XP comes from `xpDB-traces.lua`, not `xpDB-classic.lua`.
+Other Forever additions: Shen'dralas, Mount Hyjal (60), Excavation Site: Wetlands.
 
 ## Dungeon guides
 
@@ -297,8 +325,10 @@ Other data worth knowing:
    above and pick the route.
 2. Write `guides/<Faction>-<Zone>.lua` with the header conventions, add it to
    `FreresDEpee.toc` and mention it in the README "Dependencies" section (both languages).
-3. Run `python3 -I tools/lint_guide.py guides/*.lua` (0 errors) and
-   `luac5.1 -p guides/*.lua`, then `lua5.1 tests/smoke.lua .`.
+3. Run `python3 -I tools/lint_guide.py guides/*.lua` and `python3 -I tools/audit_guide.py
+   guides/*.lua` (0 errors each, read every warning), `luac5.1 -p guides/*.lua`, then
+   `lua5.1 tests/smoke.lua .`. List every cut quest in the header comment, under `Coupées`:
+   the audit warns about zone quests that are neither in the guide nor in that list.
 4. Test in game: `/reload`, check chat for "Error parsing guide", load the guide from the
    RXP menu under "Guide FDP (Horde)", walk the first steps. Things only the game shows:
    stickies at guide start, `#next` jumps, escort end points, objects missing from
